@@ -2,7 +2,7 @@
 
 Python client and CLI for [RISC](https://riscnetworks.com/)
 
-[![PyPI](https://img.shields.io/pypi/v/risc) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/risc)](https://pypi.org/project/risc/) [![PyPi Publish](https://github.com/2ndWatch/risc-python/workflows/PyPi%20Publish/badge.svg)](https://2ndwatch.github.io/risc-python/) [![Documenation](https://github.com/2ndWatch/risc-python/workflows/Github%20Pages/badge.svg)](https://2ndwatch.github.io/risc-python/) [![Lint Python](https://github.com/2ndWatch/risc-python/workflows/Lint%20Python/badge.svg)](https://github.com/2ndWatch/risc-python/actions)
+[![PyPI](https://img.shields.io/pypi/v/risc) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/risc)](https://pypi.org/project/risc/) [![PyPi Publish](https://github.com/2ndWatch/risc-python/workflows/PyPi%20Publish/badge.svg)](https://2ndwatch.github.io/risc-python/) [![Documenation](https://github.com/2ndWatch/risc-python/workflows/Github%20Pages/badge.svg)](https://2ndwatch.github.io/risc-python/)
 
 ## Requirements
 
