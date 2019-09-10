@@ -1,0 +1,30 @@
+site_name: "RISC Python Client and CLI"
+repo_name: '2ndWatch/risc-python'
+repo_url: 'https://github.com/2ndWatch/risc-python'
+
+generate:
+  - code/risc/main.md:
+    - risc.main++
+  - code/risc/utils.md:
+    - risc.utils++
+
+pages:
+  - General:
+    - Home: index.md << README.md
+    - References: references.md << REFERENCE.md
+    - Changelog: changes.md << CHANGELOG.md
+  - Code:
+    - RISC:
+      - Main: code/risc/main.md
+      - Utilities: code/risc/utils.md
+  - Miscellaneous:
+    - Security Policy: securitypolicy.md << SECURITY.md
+theme:
+  name: material
+  logo: 'https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png'
+  favicon: 'https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png'
+  feature:
+    tabs: true
+
+additional_search_paths:
+  - risc/

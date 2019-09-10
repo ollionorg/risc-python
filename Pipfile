@@ -14,13 +14,13 @@ pydocstyle = "*"
 mypy = "*"
 pytest = "*"
 twine = "*"
+pydoc-markdown = "*"
+pymdown-extensions = "*"
+mkdocs = "*"
+mkdocs-material = "*"
 
 [packages]
-requests = "*"
 risc = {editable = true,path = "."}
-pyswagger = "*"
-swaggerpy = {editable = true,git = "https://github.com/Yelp/bravado.git",ref = "swaggerpy"}
-simplejson = "*"
 
 [requires]
 python_version = "3.7"
