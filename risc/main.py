@@ -42,7 +42,6 @@ class RISC:
         }
         self.session: Session = requests.Session()
         self.session.headers.update({"User-Agent": get_user_agent()})
-        self.token = self.get_auth_token()
 
         if self.assessment_filters:
             self.assessment_code = self.get_assessment(**self.assessment_filters).get(
@@ -57,6 +56,7 @@ class RISC:
             logger.error("You must configure the assessment code or filter criteria!")
             return
 
+        self.token = self.get_auth_token()
         self.session.headers.update(
             {"token": self.token, "assessmentcode": self.assessment_code}
         )
@@ -72,7 +72,11 @@ class RISC:
         md5_api_token: str = f"{_api_token}{md5_password}"
         auth_string: str = hashlib.md5(md5_api_token.encode()).hexdigest()
         logger.info("Authentication md5 hash: %s" % auth_string)
-        return {"userid": user_id, "password": auth_string}
+        auth = {"userid": user_id, "password": auth_string}
+
+        if self.assessment_code:
+            auth["assessmentcode"] = self.assessment_code
+        return auth
 
     def get_assessments(self) -> List[Dict[str, str]]:
         """Get the RISC assessment code.
