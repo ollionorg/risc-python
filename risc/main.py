@@ -11,8 +11,8 @@ import requests
 from requests.models import Response
 from requests.sessions import Session
 
+from .models import RiscAssessment, RiscAssessments
 from .utils import get_user_agent
-from .models import RiscAssessments
 
 logger = logging.getLogger(__name__)
 
@@ -45,9 +45,8 @@ class RISC:
         self.session.headers.update({"User-Agent": get_user_agent()})
 
         if self.assessment_filters:
-            self.assessment_code = self.get_assessment(**self.assessment_filters).get(
-                "assessment_code", ""
-            )
+            self.assessment = self.get_assessment(**self.assessment_filters)
+            self.assessment_code = self.assessment.assessment_code
 
         if (
             not self.assessment_code
@@ -95,11 +94,11 @@ class RISC:
             logger.error("Unable to retrieve the assessment code!")
             return RiscAssessments()
 
-        assessments = response.json().get("assessments", [])
-        _assessments = RiscAssessments(**assessments)
+        assessment_items = response.json().get("assessments", [])
+        _assessments = RiscAssessments(assessments=assessment_items)
         return _assessments
 
-    def get_assessment(self, **kwargs) -> Dict[str, str]:
+    def get_assessment(self, **kwargs) -> RiscAssessment:
         """Get the RISC assessment code.
 
         Returns:
@@ -107,15 +106,13 @@ class RISC:
 
         """
         response_data: RiscAssessments = self.get_assessments()
-
         if not response_data:
-            return {}\
+            return {}
 
         if len(response_data.assessments) > 1:
             logger.warn(
                 "Multiple assessments found for the provided filter criteria! Returning the first result..."
             )
-
         return next(item for item in response_data.assessments if not item.is_demo)
 
     def get_auth_token(self):

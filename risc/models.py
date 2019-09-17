@@ -39,16 +39,16 @@ class RiscResponse(AbstractRiscModel):
 
     response: Response = Response()
     session: Session = Session()
-    items: List[AbstractRiscModel] = []
+    items: List[Any] = field(default_factory=list)
     return_status: str = ""
     return_status_detail: str = ""
-    json: Dict[str, str] = {}
+    json: Dict[str, str] = field(default_factory=dict)
     page: int = 0
 
-    def __repr__(self):
-        """Define the representation of a RISC response."""
-        items = ", ".join(f"{item!s}" for item in self.items)
-        return f"<{self.__class__.__name__}: ({items})>"
+    # def __repr__(self):
+    #     """Define the representation of a RISC response."""
+    #     items = ", ".join(f"{item!s}" for item in self.items)
+    #     return f"<{self.__class__.__name__}: ({items})>"
 
 
 @dataclass
@@ -74,7 +74,11 @@ class RiscAssessment(RiscResourceModel):
     start_date: str = ""
     state: str = ""
     zip: str = ""
-    json: Dict[str, str] = {}
+    json: Dict[str, str] = field(default_factory=dict)
+
+    def __str__(self):
+        """Define the string representation of the abstract RISC model."""
+        return f"<{self.__class__.__name__}: {self.assessment_code}>"
 
     @property
     def is_demo(self):
@@ -91,13 +95,14 @@ class RiscAssessments(RiscResponse):
 
     assessments: List[Any] = field(default_factory=List[Any])
 
-    def __post_init__(self):
+    def __post_init__(self) -> None:
         self.assessments = self.assessment_factory()
 
-    def assessment_factory(self) -> List[Any]:
+    def assessment_factory(self) -> List[RiscAssessment]:
         if not self.assessments:
             return []
-        return [RiscAssessment(**item) for item in self.assessments]
+        assess = [RiscAssessment(**item) for item in self.assessments]
+        return assess
 
 
 @dataclass
@@ -126,7 +131,7 @@ class RiscStack(RiscResourceModel):
     num_stack_members: int = 0
     stack_name: str = ""
     stackid: int = 0
-    tags: List[Any] = field(default_factory=List[Any])
+    tags: List[Any] = field(default_factory=list)
 
     def __post_init__(self):
         self.tag = self.tag_factory()
