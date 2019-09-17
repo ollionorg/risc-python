@@ -106,24 +106,17 @@ class RISC:
             str: The RISC assessment code.
 
         """
-        response_data = self.get_assessments()
+        response_data: RiscAssessments = self.get_assessments()
 
         if not response_data:
-            return {}
+            return {}\
 
-        for assessment in response_data.assessments:
-            if assessment.is_demo:
-
-        # results = [
-        #     obj for obj in response_data if set(kwargs.items()) <= set(obj.items())
-        # ]
-
-        if len(results) > 1:
+        if len(response_data.assessments) > 1:
             logger.warn(
                 "Multiple assessments found for the provided filter criteria! Returning the first result..."
             )
 
-        return results[0]
+        return next(item for item in response_data.assessments if not item.is_demo)
 
     def get_auth_token(self):
         """Authenticate with RISC.
