@@ -12,6 +12,7 @@ from requests.models import Response
 from requests.sessions import Session
 
 from .utils import get_user_agent
+from .models import RiscAssessments
 
 logger = logging.getLogger(__name__)
 
@@ -78,7 +79,7 @@ class RISC:
             auth["assessmentcode"] = self.assessment_code
         return auth
 
-    def get_assessments(self) -> List[Dict[str, str]]:
+    def get_assessments(self) -> RiscAssessments:
         """Get the RISC assessment code.
 
         Returns:
@@ -92,10 +93,11 @@ class RISC:
 
         if response.status_code != 200:
             logger.error("Unable to retrieve the assessment code!")
-            return []
+            return RiscAssessments()
 
         assessments = response.json().get("assessments", [])
-        return assessments
+        _assessments = RiscAssessments(**assessments)
+        return _assessments
 
     def get_assessment(self, **kwargs) -> Dict[str, str]:
         """Get the RISC assessment code.
@@ -109,9 +111,12 @@ class RISC:
         if not response_data:
             return {}
 
-        results = [
-            obj for obj in response_data if set(kwargs.items()) <= set(obj.items())
-        ]
+        for assessment in response_data.assessments:
+            if assessment.is_demo:
+
+        # results = [
+        #     obj for obj in response_data if set(kwargs.items()) <= set(obj.items())
+        # ]
 
         if len(results) > 1:
             logger.warn(
