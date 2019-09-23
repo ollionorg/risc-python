@@ -469,7 +469,7 @@
 
 <p>Build the API authentication token.
 <h3 id="risc.main.RISC.get_assessments">get_assessments</h3></p>
-<pre><code class="python">RISC.get_assessments(self) -&gt; List[Dict[str, str]]
+<pre><code class="python">RISC.get_assessments(self) -&gt; risc.models.RiscAssessments
 </code></pre>
 
 <p>Get the RISC assessment code.</p>
@@ -477,7 +477,7 @@
     str: The RISC assessment code.</p>
 <h3 id="risc.main.RISC.get_assessment">get_assessment</h3>
 
-<pre><code class="python">RISC.get_assessment(self, **kwargs) -&gt; Dict[str, str]
+<pre><code class="python">RISC.get_assessment(self, **kwargs) -&gt; risc.models.RiscAssessment
 </code></pre>
 
 <p>Get the RISC assessment code.</p>
@@ -572,6 +572,11 @@
 </code></pre>
 
 <p>Fetch the swagger API configuration file.
+<h3 id="risc.main.RISC.get_server">get_server</h3></p>
+<pre><code class="python">RISC.get_server(self, search: str = '', compare: str = 'hostname') -&gt; Dict[str, Any]
+</code></pre>
+
+<p>Sift through the asset search response and only return the relevant host.
 <h2 id="risc.main.main">main</h2></p>
 <pre><code class="python">main() -&gt; None
 </code></pre>
