@@ -4,7 +4,7 @@
 import hashlib
 import logging
 import os
-from typing import Dict, List
+from typing import Any, Dict
 
 import fire
 import requests
@@ -107,7 +107,7 @@ class RISC:
         """
         response_data: RiscAssessments = self.get_assessments()
         if not response_data:
-            return {}
+            return RiscAssessment()
 
         if len(response_data.assessments) > 1:
             logger.warn(
@@ -159,7 +159,7 @@ class RISC:
         )
 
         if page:
-            self.session.headers.update({"page": page})
+            self.session.headers.update({"page": str(page)})
 
         if device_type:
             uri = f"{uri_base}/byType/{device_type}"
@@ -217,7 +217,7 @@ class RISC:
         if page:
             del self.session.headers["page"]
 
-        return response
+        return response.json()
 
     def iaas_get_providers(self):
         """Use to retrieve a list of IaaS providers."""
@@ -268,7 +268,7 @@ class RISC:
 
     def ucel_get_assets_paginated(self, check_id: str = "", page: int = 1):
         """Use to retrieve data on the device(s) by check."""
-        self.session.headers.update({"page": page})
+        self.session.headers.update({"page": str(page)})
         response: Response = self.session.get(
             f"{self.api_endpoint}/ucel/getAssets/paginated/{check_id}"
         )
@@ -288,6 +288,25 @@ class RISC:
             "https://api.riscnetworks.com/docs/_/resource_list.json"
         )
         return swagger_resource
+
+    def get_server(self, search: str = "", compare: str = "hostname") -> Dict[str, Any]:
+        """Sift through the asset search response and only return the relevant host."""
+        response: Response = self.assets_search(search=search)
+        if response.status_code != 200:
+            print("Failure fetching host data!")
+            return {}
+
+        host_data = response.json().get("assets", [])
+        try:
+            return_data = next(
+                item
+                for item in host_data
+                if item["data"][0][compare].lower() == search.lower()
+            )
+        except (KeyError, IndexError):
+            print(f"Unable to find the specified server: ({search})!")
+            return {}
+        return return_data
 
 
 def main() -> None:

@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """Define the RISC models module."""
 import logging
+import uuid as _uuid
 from dataclasses import dataclass, field
 from typing import Any, Dict, List
 
 from requests.models import Response
 from requests.sessions import Session
-import uuid as _uuid
 
 logger = logging.getLogger(__name__)
 
@@ -84,7 +84,9 @@ class RiscAssessment(RiscResourceModel):
     def is_demo(self):
         """Determine whether or not the Assessment is a demo."""
         return (
-            self.company_name == "Customer Sandbox" and self.state == "Kentucky" and self.zip == "12345"
+            self.company_name == "Customer Sandbox"
+            and self.state == "Kentucky"
+            and self.zip == "12345"
             and self.appliance_public_ip == "unknown"
         )
 
