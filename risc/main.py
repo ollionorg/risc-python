@@ -11,7 +11,12 @@ import requests
 from requests.models import Response
 from requests.sessions import Session
 
-from .models import RiscAssessment, RiscAssessments, RiscDeviceConnectivityParent, RiscStackConnectivityParent
+from .models import (
+    RiscAssessment,
+    RiscAssessments,
+    RiscDeviceConnectivityParent,
+    RiscStackConnectivityParent,
+)
 from .utils import get_user_agent
 
 logger = logging.getLogger(__name__)
@@ -198,7 +203,9 @@ class RISC:
         )
         return response
 
-    def stacks_get_connectivity(self, stack_id: str = "") -> RiscStackConnectivityParent:
+    def stacks_get_connectivity(
+        self, stack_id: str = ""
+    ) -> RiscStackConnectivityParent:
         """Use to retrieve a list of connected stacks."""
         response: Response = self.session.get(
             f"{self.api_endpoint}/stacks/getConnectivity/{stack_id}"

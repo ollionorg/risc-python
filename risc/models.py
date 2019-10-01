@@ -5,10 +5,9 @@ import uuid as _uuid
 from dataclasses import dataclass, field
 from typing import Any, Dict, List
 
+import pandas as pd
 from requests.models import Response
 from requests.sessions import Session
-
-import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -181,7 +180,9 @@ class RiscStackConnectivityParent(RiscResourceModel):
     @property
     def dataframe(self):
         """Handle converting the connectivity list of objects to a pandas DataFrame."""
-        connectivity_dict: List[Dict[str, Any]] = self.response.json().get('connectivity', [])
+        connectivity_dict: List[Dict[str, Any]] = self.response.json().get(
+            "connectivity", []
+        )
         if not connectivity_dict:
             return pd.DataFrame()
         return pd.DataFrame.from_dict(connectivity_dict)
@@ -232,12 +233,16 @@ class RiscDeviceConnectivityParent(RiscResourceModel):
 
     def __post_init__(self):
         """Handle post initialization steps."""
-        self.connectivity = self.to_list_factory(class_type=RiscDeviceConnectivity, factory_objects=self.connectivity)
+        self.connectivity = self.to_list_factory(
+            class_type=RiscDeviceConnectivity, factory_objects=self.connectivity
+        )
 
     @property
     def dataframe(self):
         """Handle converting the connectivity list of objects to a pandas DataFrame."""
-        connectivity_dict: List[Dict[str, Any]] = self.response.json().get('connectivity', [])
+        connectivity_dict: List[Dict[str, Any]] = self.response.json().get(
+            "connectivity", []
+        )
         if not connectivity_dict:
             return pd.DataFrame()
         return pd.DataFrame.from_dict(connectivity_dict)
