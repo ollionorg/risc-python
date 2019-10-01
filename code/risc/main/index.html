@@ -513,12 +513,12 @@
 
 <p>Use to retrieve a list of stack costs.
 <h3 id="risc.main.RISC.stacks_get_connectivity">stacks_get_connectivity</h3></p>
-<pre><code class="python">RISC.stacks_get_connectivity(self, stack_id: str = '')
+<pre><code class="python">RISC.stacks_get_connectivity(self, stack_id: str = '') -&gt; risc.models.RiscStackConnectivityParent
 </code></pre>
 
 <p>Use to retrieve a list of connected stacks.
 <h3 id="risc.main.RISC.stacks_get_device_connectivity">stacks_get_device_connectivity</h3></p>
-<pre><code class="python">RISC.stacks_get_device_connectivity(self, stack_id: int, connectivity_type: str = 'internal', page: int = 0)
+<pre><code class="python">RISC.stacks_get_device_connectivity(self, stack_id: int, connectivity_type: str = 'internal', page: int = 0) -&gt; risc.models.RiscDeviceConnectivityParent
 </code></pre>
 
 <p>Use to retrieve a list of connected stacks.
