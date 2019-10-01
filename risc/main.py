@@ -11,12 +11,7 @@ import requests
 from requests.models import Response
 from requests.sessions import Session
 
-from .models import (
-    RiscAssessment,
-    RiscAssessments,
-    RiscDeviceConnectivityParent,
-    RiscStackConnectivityParent,
-)
+from .models import RiscAssessment, RiscAssessments, RiscDeviceConnectivityParent, RiscStackConnectivityParent
 from .utils import get_user_agent
 
 logger = logging.getLogger(__name__)
