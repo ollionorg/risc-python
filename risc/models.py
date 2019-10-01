@@ -5,6 +5,7 @@ import uuid as _uuid
 from dataclasses import dataclass, field
 from typing import Any, Dict, List
 
+import pandas as pd
 from requests.models import Response
 from requests.sessions import Session
 
@@ -32,6 +33,29 @@ class AbstractRiscModel:
         items = self.to_dict_items
         return dict(items)
 
+    def to_list_factory(self, class_type: Any, factory_objects: List[Any]) -> List[Any]:
+        """Handle the casting of lists to a list of the provided object type."""
+        factories_data: List[Any] = []
+
+        if not factory_objects:
+            return factories_data
+
+        if isinstance(factory_objects[0], class_type):
+            factories_data = factory_objects
+        else:
+            factories_data = [class_type(**item) for item in factory_objects]
+
+        return factories_data
+
+    def to_obj_factory(self, class_type: Any, factory_object: Any) -> Any:
+        """Handle the casting of an object to the provided object type."""
+        if not factory_object:
+            return class_type()
+
+        if isinstance(factory_object, class_type):
+            return factory_object
+        return class_type(**factory_object)
+
 
 @dataclass
 class RiscResponse(AbstractRiscModel):
@@ -55,7 +79,7 @@ class RiscResponse(AbstractRiscModel):
 class RiscResourceModel(AbstractRiscModel):
     """Abstract resource model for all RISC models."""
 
-    pass
+    response: Response = Response()
 
 
 @dataclass
@@ -95,31 +119,142 @@ class RiscAssessment(RiscResourceModel):
 class RiscAssessments(RiscResponse):
     """Define the Assessments resource model schema."""
 
-    assessments: List[Any] = field(default_factory=List[Any])
+    assessments: List[Any] = field(default_factory=list)
 
-    def __post_init__(self) -> None:
-        self.assessments = self.assessment_factory()
-
-    def assessment_factory(self) -> List[RiscAssessment]:
-        if not self.assessments:
-            return []
-        assess = [RiscAssessment(**item) for item in self.assessments]
-        return assess
+    def __post_init__(self):
+        """Handle post initialization steps."""
+        self.assessments: List[RiscAssessment] = self.to_list_factory(
+            class_type=RiscAssessment, factory_objects=self.assessments
+        )
 
 
 @dataclass
 class RiscStacks(RiscResponse):
     """Define the Stacks resource model schema."""
 
-    stacks: List[Any] = field(default_factory=List[Any])
+    stacks: List[Any] = field(default_factory=list)
 
     def __post_init__(self):
-        self.stacks = self.stack_factory()
+        """Handle post initialization steps."""
+        self.stacks: List[RiscStack] = self.to_list_factory(
+            class_type=RiscStack, factory_objects=self.stacks
+        )
 
-    def stack_factory(self) -> List[Any]:
-        if not self.stacks:
-            return []
-        return [RiscStack(**item) for item in self.stacks]
+
+@dataclass
+class RiscStackConnectivity(RiscResourceModel):
+    """Define the Connectivity resource model schema."""
+
+    avg_duration_per_connection: float = 0.0
+    avg_kbps_per_connection: float = 0.0
+    avg_rtt_per_connection: float = 0.0
+    connections_seen_via_netstat: int = 0
+    dest_location: int = 0
+    dest_location_name: str = ""
+    max_kbps_per_connection: float = 0.0
+    max_rtt_per_connection: float = 0.0
+    min_rtt_per_connection: float = 0.0
+    number_of_distinct_protocols: int = 0
+    number_of_distinct_source_ip_dest_ip_pairs: int = 0
+    source_location_name: str = ""
+    source_locationid: int = 0
+    total_bytes: int = 0
+    total_duration_per_connection: float = 0.0
+    total_flows: int = 0
+
+
+@dataclass
+class RiscStackConnectivityParent(RiscResourceModel):
+    """Define the parent Stack Connectivity resource model schema."""
+
+    connectivity: List[Any] = field(default_factory=list)
+    returnStatus: str = ""
+    returnStatusDetail: str = ""
+
+    def __post_init__(self):
+        """Handle post initialization steps."""
+        self.connectivity = self.to_list_factory(
+            class_type=RiscStackConnectivity, factory_objects=self.connectivity
+        )
+
+    @property
+    def dataframe(self):
+        """Handle converting the connectivity list of objects to a pandas DataFrame."""
+        connectivity_dict: List[Dict[str, Any]] = self.response.json().get(
+            "connectivity", []
+        )
+        if not connectivity_dict:
+            return pd.DataFrame()
+        return pd.DataFrame.from_dict(connectivity_dict)
+
+
+@dataclass
+class RiscDeviceConnectivity(RiscResourceModel):
+    """Define the Device Connectivity resource model schema."""
+
+    avg_duration: float = 0.0
+    avg_kbps: float = 0.0
+    avg_rtt: float = 0.0
+    dest_application: str = ""
+    dest_application_context: str = ""
+    dest_application_instance: str = ""
+    dest_bytes: int = 0
+    dest_deviceid: int = 0
+    dest_ip: str = ""
+    dest_packet_count: int = 0
+    dest_packet_loss: int = 0
+    dest_port: int = 0
+    dest_process: str = ""
+    max_kbps: float = 0.0
+    max_rtt: float = 0.0
+    min_rtt: float = 0.0
+    netstat_count: int = 0
+    source_application: str = ""
+    source_application_context: str = ""
+    source_application_instance: str = ""
+    source_bytes: int = 0
+    source_deviceid: int = 0
+    source_packet_count: int = 0
+    source_packet_loss: int = 0
+    source_process: str = ""
+    src_ip: str = ""
+    total_bytes: int = 0
+    total_duration: float = 0.0
+    total_packets: int = 0
+
+
+@dataclass
+class RiscDeviceConnectivityParent(RiscResourceModel):
+    """Define the parent Device Connectivity resource model schema."""
+
+    connectivity: List[Any] = field(default_factory=list)
+    returnStatus: str = ""
+    returnStatusDetail: str = ""
+
+    def __post_init__(self):
+        """Handle post initialization steps."""
+        self.connectivity = self.to_list_factory(
+            class_type=RiscDeviceConnectivity, factory_objects=self.connectivity
+        )
+
+    @property
+    def dataframe(self):
+        """Handle converting the connectivity list of objects to a pandas DataFrame."""
+        connectivity_dict: List[Dict[str, Any]] = self.response.json().get(
+            "connectivity", []
+        )
+        if not connectivity_dict:
+            return pd.DataFrame()
+        return pd.DataFrame.from_dict(connectivity_dict)
+
+
+@dataclass
+class RiscTag(RiscResourceModel):
+    """Define the Tag resource model schema."""
+
+    tagid: int = 0
+    tagkey: str = ""
+    tagvalue: str = ""
 
 
 @dataclass
@@ -136,18 +271,7 @@ class RiscStack(RiscResourceModel):
     tags: List[Any] = field(default_factory=list)
 
     def __post_init__(self):
-        self.tag = self.tag_factory()
-
-    def tag_factory(self) -> List[Any]:
-        if not self.tag:
-            return []
-        return [RiscTag(**item) for item in self.tag]
-
-
-@dataclass
-class RiscTag(RiscResourceModel):
-    """Define the Tag resource model schema."""
-
-    tagid: int = 0
-    tagkey: str = ""
-    tagvalue: str = ""
+        """Handle post initialization steps."""
+        self.tags: List[RiscTag] = self.to_list_factory(
+            class_type=RiscTag, factory_objects=self.tags
+        )

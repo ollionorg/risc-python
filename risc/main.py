@@ -11,7 +11,7 @@ import requests
 from requests.models import Response
 from requests.sessions import Session
 
-from .models import RiscAssessment, RiscAssessments
+from .models import RiscAssessment, RiscAssessments, RiscDeviceConnectivityParent, RiscStackConnectivityParent
 from .utils import get_user_agent
 
 logger = logging.getLogger(__name__)
@@ -60,6 +60,12 @@ class RISC:
         self.session.headers.update(
             {"token": self.token, "assessmentcode": self.assessment_code}
         )
+
+    def __repr__(self):
+        """Provide the representation for the RISC object."""
+        if self.assessment:
+            return f"<RISC - User: {self.auth.get('user_id', '')} - Assessment: {self.assessment.assessment_code}>"
+        return f"<RISC - User: {self.auth.get('user_id', '')}>"
 
     def build_auth(self) -> Dict[str, str]:
         """Build the API authentication token."""
@@ -192,19 +198,25 @@ class RISC:
         )
         return response
 
-    def stacks_get_connectivity(self, stack_id: str = ""):
+    def stacks_get_connectivity(
+        self, stack_id: str = ""
+    ) -> RiscStackConnectivityParent:
         """Use to retrieve a list of connected stacks."""
         response: Response = self.session.get(
             f"{self.api_endpoint}/stacks/getConnectivity/{stack_id}"
         )
-        return response
+        if response.status_code != 200:
+            return RiscStackConnectivityParent(response=response)
+
+        connectivity_data = response.json()
+        return RiscStackConnectivityParent(response=response, **connectivity_data)
 
     def stacks_get_device_connectivity(
         self, stack_id: int, connectivity_type: str = "internal", page: int = 0
-    ):
+    ) -> RiscDeviceConnectivityParent:
         """Use to retrieve a list of connected stacks."""
         if connectivity_type.lower() not in ["internal", "external"]:
-            return Response()
+            return RiscDeviceConnectivityParent()
 
         if page:
             self.session.headers.update({"page": str(page)})
@@ -217,7 +229,11 @@ class RISC:
         if page:
             del self.session.headers["page"]
 
-        return response.json()
+        if response.status_code != 200:
+            return RiscDeviceConnectivityParent(response=response)
+
+        connectivity_data = response.json()
+        return RiscDeviceConnectivityParent(response=response, **connectivity_data)
 
     def iaas_get_providers(self):
         """Use to retrieve a list of IaaS providers."""
