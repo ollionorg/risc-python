@@ -66,6 +66,14 @@ class RISC:
             {"token": self.token, "assessmentcode": self.assessment_code}
         )
 
+        try:
+            self.stack_data = self.stacks_get_summary().json()
+        except Exception as e:
+            logger.error(
+                "Error encountered while attempting to fetch RISC stack data! Error: (%s)"
+                % e
+            )
+
     def __repr__(self):
         """Provide the representation for the RISC object."""
         if self.assessment:
@@ -155,6 +163,14 @@ class RISC:
         """Use to retrieve a list of device types and counts."""
         response: Response = self.session.get(f"{self.api_endpoint}/assets/getSummary")
         return response
+
+    def lookup_stack_id(self, name: str):
+        if not self.stack_data:
+            logger.error("Stack data unavailable!")
+            return {}
+        return next(
+            item for item in self.stack_data["assets"] if item["stack_name"] == name
+        )["stackid"]
 
     def assets_get_assets(
         self,
@@ -314,10 +330,21 @@ class RISC:
         return swagger_resource
 
     def get_server(self, search: str = "", compare: str = "hostname") -> Dict[str, Any]:
-        """Sift through the asset search response and only return the relevant host."""
+        """Sift through the asset search response and only return the relevant host.
+
+        Args:
+            search (str): The value to search for against the assets search API endpoint.
+            compare (str): The key to be used to match the provided search value with.
+                For example, this can be changed from hostname to identifying_ip.
+                Defaults to: hostname.
+
+        Returns:
+            dict: The device asset object, as returned from the RISC API.
+
+        """
         response: Response = self.assets_search(search=search)
         if response.status_code != 200:
-            print("Failure fetching host data!")
+            logger.error("Failure fetching host data!")
             return {}
 
         host_data = response.json().get("assets", [])
@@ -328,27 +355,82 @@ class RISC:
                 if item["data"][compare].lower() == search.lower()
             )
         except (KeyError, IndexError):
-            print(f"Unable to find the specified server: ({search})!")
+            logger.error("Unable to find the specified server: (%s)!" % search)
             return {}
         return return_data
 
-    def get_disks(self, search: str, fudge_factor: float = 1.5):
-        """Get disk data for a specific asset."""
+    def get_application_ips(self, application: str, identifying_ips_only: bool = True):
+        """Get all associated IP addresses for the provided application stack.
+
+        Args:
+            application (str): The application stack name, as identified in RISC.
+            identifying_ips_only (bool): Whether or not to return only the identifying_ip value
+                for each asset found within the application stack. If set to: False, this method
+                will iterate through all ips in the device data object. Defaults to: True.
+
+        Returns:
+            list of str: The list of device IP addresses present in the application stack.
+
+        """
+        ip_addresses = []
+        stack_id = self.lookup_stack_id(application)
+        stack_assets = self.assets_get_assets(stack_id=stack_id)
+        if stack_assets.status_code != 200:
+            logger.error(
+                "Failed to retrieve application stack assets for: (%s)" % application
+            )
+            return {}
+
+        for asset in stack_assets.json().get("assets", []):
+            if identifying_ips_only:
+                ip = asset.get("data", {}).get("identifying_ip", "")
+                if ip:
+                    ip_addresses.append(ip)
+            else:
+                found_ips = asset.get("data", {}).get("ips", [])
+                ips = [found_ip["ip"] for found_ip in found_ips]
+                ip_addresses += ips
+        return ip_addresses
+
+    def get_disks(
+        self, search: str, fudge_factor: float = 1.5, only_local_disks: bool = True
+    ) -> Dict[str, Any]:
+        """Get disk data for a specific asset.
+
+        Args:
+            search (str): The asset hostname to lookup.
+            fudge_factor (float): The value multiplier to be used when calculating volume size
+                to be returned.  This can be used to estimate a buffer over current device usage.
+                Defaults to: 1.0 to represent the existing disk usage.
+            only_local_disks (bool): Whether or not to reduce the response to include only local disks.
+                Defaults to: True.
+
+        Returns:
+            dict: The mapping of disk data provided by RISC and additional drive usage data.
+
+        """
         data = {}
         asset = self.get_server(search=search)
         disks = asset.get("data", {}).get("disks_logical", [])
         for disk in disks:
             # If the disk isn't a local disk, i.e. Compact, ignore it.
-            if disk["disk_type"] != "Local Disk":
+            if only_local_disks and disk["disk_type"] != "Local Disk":
                 continue
 
-            # Estimate a good
-            disk["sizing"] = handle_disk_sizing(
-                total_size=disk["disk_size_bytes"],
-                free_size=disk["disk_free_space_bytes"],
-                fudge_factor=fudge_factor,
+            usage_kwargs = {
+                "total_size": disk["disk_size_bytes"],
+                "free_size": disk["disk_free_space_bytes"],
+            }
+            drive_letter = disk["disk_name"].rstrip(":")
+
+            # Provide disk usage in KB, MB, GB, or TB based on size.
+            disk["usage"] = handle_disk_sizing(fudge_factor=1.0, **usage_kwargs)
+            # Provide disk sizing estimations based on utilized vs free space on disks multipled by fudge factor.
+            disk["drive_sizing_estimations"] = handle_disk_sizing(
+                fudge_factor=fudge_factor, **usage_kwargs
             )
-            data[disk["disk_name"].rstrip(":")] = disk
+
+            data[drive_letter] = disk
         return data
 
 
