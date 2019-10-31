@@ -17,7 +17,7 @@ from .models import (
     RiscDeviceConnectivityParent,
     RiscStackConnectivityParent,
 )
-from .utils import get_user_agent
+from .utils import format_bytes, get_user_agent, handle_disk_sizing
 
 logger = logging.getLogger(__name__)
 
@@ -271,6 +271,9 @@ class RISC:
         response: Response = self.session.get(
             f"{self.api_endpoint}/assets/search/{search}"
         )
+        if response.status_code != 200:
+            logger.error("Failed to retrieve asset data - Asset: (%s)!" % search)
+            return {}
         return response
 
     def ucel_get_checks(self, device_id: str = ""):
@@ -322,12 +325,31 @@ class RISC:
             return_data = next(
                 item
                 for item in host_data
-                if item["data"][0][compare].lower() == search.lower()
+                if item["data"][compare].lower() == search.lower()
             )
         except (KeyError, IndexError):
             print(f"Unable to find the specified server: ({search})!")
             return {}
         return return_data
+
+    def get_disks(self, search: str, fudge_factor: float = 1.5):
+        """Get disk data for a specific asset."""
+        data = {}
+        asset = self.get_server(search=search)
+        disks = asset.get("data", {}).get("disks_logical", [])
+        for disk in disks:
+            # If the disk isn't a local disk, i.e. Compact, ignore it.
+            if disk["disk_type"] != "Local Disk":
+                continue
+
+            # Estimate a good
+            disk["sizing"] = handle_disk_sizing(
+                total_size=disk["disk_size_bytes"],
+                free_size=disk["disk_free_space_bytes"],
+                fudge_factor=fudge_factor,
+            )
+            data[disk["disk_name"].rstrip(":")] = disk
+        return data
 
 
 def main() -> None:

@@ -22,6 +22,7 @@ mkdocs-material = "*"
 [packages]
 risc = {editable = true,path = "."}
 pandas-profiling = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.7"
