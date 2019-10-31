@@ -1,0 +1,1564 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+    
+    
+      
+        <title>Models - RISC Python Client and CLI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="RISC Python Client and CLI" class="md-header-nav__button md-logo">
+          
+            <img src="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              RISC Python Client and CLI
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Models
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/2ndWatch/risc-python/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../.." class="md-tabs__link">
+          General
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    
+    
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../main/" class="md-tabs__link md-tabs__link--active">
+          Code
+        </a>
+      
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../../securitypolicy/" class="md-tabs__link">
+          Miscellaneous
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="RISC Python Client and CLI" class="md-nav__button md-logo">
+      
+        <img src="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png" width="48" height="48">
+      
+    </a>
+    RISC Python Client and CLI
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/2ndWatch/risc-python/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      General
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        General
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../references/" title="References" class="md-nav__link">
+      References
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../changes/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Code
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Code
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-1" type="checkbox" id="nav-2-1" checked>
+    
+    <label class="md-nav__link" for="nav-2-1">
+      RISC
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-1">
+        RISC
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../main/" title="Main" class="md-nav__link">
+      Main
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="Models" class="md-nav__link md-nav__link--active">
+      Models
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../utils/" title="Utilities" class="md-nav__link">
+      Utilities
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Miscellaneous
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Miscellaneous
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../securitypolicy/" title="Security Policy" class="md-nav__link">
+      Security Policy
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/2ndWatch/risc-python/edit/master/docs/code/risc/models.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="risc.models">risc.models</h1>
+
+<p>Define the RISC models module.
+<h2 id="risc.models.AbstractRiscModel">AbstractRiscModel</h2></p>
+<pre><code class="python">AbstractRiscModel(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7')) -&gt; None
+</code></pre>
+
+<p>Abstract resource model for all RISC models.
+<h3 id="risc.models.AbstractRiscModel.to_dict">to_dict</h3></p>
+<p>Get the dictionary representation of the model's attributes.
+<h3 id="risc.models.AbstractRiscModel.to_dict_items">to_dict_items</h3></p>
+<p>Get the dictionary items of the model's attributes.
+<h3 id="risc.models.AbstractRiscModel.uuid">uuid</h3></p>
+<p>Instances of the UUID class represent UUIDs as specified in RFC 4122.
+UUID objects are immutable, hashable, and usable as dictionary keys.
+Converting a UUID to a string with str() yields something in the form
+'12345678-1234-1234-1234-123456789abc'.  The UUID constructor accepts
+five possible forms: a similar string of hexadecimal digits, or a tuple
+of six integer fields (with 32-bit, 16-bit, 16-bit, 8-bit, 8-bit, and
+48-bit values respectively) as an argument named 'fields', or a string
+of 16 bytes (with all the integer fields in big-endian order) as an
+argument named 'bytes', or a string of 16 bytes (with the first three
+fields in little-endian order) as an argument named 'bytes_le', or a
+single 128-bit integer as an argument named 'int'.</p>
+<p>UUIDs have these read-only attributes:</p>
+<pre><code>bytes       the UUID as a 16-byte string (containing the six
+            integer fields in big-endian byte order)
+
+bytes_le    the UUID as a 16-byte string (with time_low, time_mid,
+            and time_hi_version in little-endian byte order)
+
+fields      a tuple of the six integer fields of the UUID,
+            which are also available as six individual attributes
+            and two derived attributes:
+
+    time_low                the first 32 bits of the UUID
+    time_mid                the next 16 bits of the UUID
+    time_hi_version         the next 16 bits of the UUID
+    clock_seq_hi_variant    the next 8 bits of the UUID
+    clock_seq_low           the next 8 bits of the UUID
+    node                    the last 48 bits of the UUID
+
+    time                    the 60-bit timestamp
+    clock_seq               the 14-bit sequence number
+
+hex         the UUID as a 32-character hexadecimal string
+
+int         the UUID as a 128-bit integer
+
+urn         the UUID as a URN as specified in RFC 4122
+
+variant     the UUID variant (one of the constants RESERVED_NCS,
+            RFC_4122, RESERVED_MICROSOFT, or RESERVED_FUTURE)
+
+version     the UUID version number (1 through 5, meaningful only
+            when the variant is RFC_4122)
+
+is_safe     An enum indicating whether the UUID has been generated in
+            a way that is safe for multiprocessing applications, via
+            uuid_generate_time_safe(3).
+</code></pre>
+<h3 id="risc.models.AbstractRiscModel.to_list_factory">to_list_factory</h3>
+
+<pre><code class="python">AbstractRiscModel.to_list_factory(self, class_type: Any, factory_objects: List[Any]) -&gt; List[Any]
+</code></pre>
+
+<p>Handle the casting of lists to a list of the provided object type.
+<h3 id="risc.models.AbstractRiscModel.to_obj_factory">to_obj_factory</h3></p>
+<pre><code class="python">AbstractRiscModel.to_obj_factory(self, class_type: Any, factory_object: Any) -&gt; Any
+</code></pre>
+
+<p>Handle the casting of an object to the provided object type.
+<h2 id="risc.models.RiscResponse">RiscResponse</h2></p>
+<pre><code class="python">RiscResponse(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7fcd91992750&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0) -&gt; None
+</code></pre>
+
+<p>Abstract resource model for all RISC models.
+<h3 id="risc.models.RiscResponse.page">page</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscResponse.response">response</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>The :class:<code>Response &lt;Response&gt;</code> object, which contains a
+server's response to an HTTP request.</p>
+<h3 id="risc.models.RiscResponse.return_status">return_status</h3>
+
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscResponse.return_status_detail">return_status_detail</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscResponse.session">session</h3></p>
+<p>A Requests session.</p>
+<p>Provides cookie persistence, connection-pooling, and configuration.</p>
+<p>Basic Usage::</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import requests
+s = requests.Session()
+s.get('https://httpbin.org/get')
+  <Response [200]></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Or as a context manager::</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>with requests.Session() as s:
+    s.get('https://httpbin.org/get')
+  <Response [200]></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="risc.models.RiscResourceModel">RiscResourceModel</h2>
+
+<pre><code class="python">RiscResourceModel(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;) -&gt; None
+</code></pre>
+
+<p>Abstract resource model for all RISC models.
+<h3 id="risc.models.RiscResourceModel.response">response</h3></p>
+<p>The :class:<code>Response &lt;Response&gt;</code> object, which contains a
+server's response to an HTTP request.</p>
+<h2 id="risc.models.RiscAssessment">RiscAssessment</h2>
+
+<pre><code class="python">RiscAssessment(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;, address: str = '', appliance_public_ip: str = '', assessment_code: str = '', assessment_stage_description: str = '', assessment_stage_name: str = '', city: str = '', company_name: str = '', country: str = '', end_date: str = '', start_date: str = '', state: str = '', zip: str = '', json: Dict[str, str] = &lt;factory&gt;) -&gt; None
+</code></pre>
+
+<p>Define the Assessment resource model schema.
+<h3 id="risc.models.RiscAssessment.address">address</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.appliance_public_ip">appliance_public_ip</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.assessment_code">assessment_code</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.assessment_stage_description">assessment_stage_description</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.assessment_stage_name">assessment_stage_name</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.city">city</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.company_name">company_name</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.country">country</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.end_date">end_date</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.is_demo">is_demo</h3></p>
+<p>Determine whether or not the Assessment is a demo.
+<h3 id="risc.models.RiscAssessment.start_date">start_date</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.state">state</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscAssessment.zip">zip</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h2 id="risc.models.RiscAssessments">RiscAssessments</h2></p>
+<pre><code class="python">RiscAssessments(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7fcd91992750&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0, assessments: List[Any] = &lt;factory&gt;) -&gt; None
+</code></pre>
+
+<p>Define the Assessments resource model schema.
+<h2 id="risc.models.RiscStacks">RiscStacks</h2></p>
+<pre><code class="python">RiscStacks(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7fcd91992750&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0, stacks: List[Any] = &lt;factory&gt;) -&gt; None
+</code></pre>
+
+<p>Define the Stacks resource model schema.
+<h2 id="risc.models.RiscStackConnectivity">RiscStackConnectivity</h2></p>
+<pre><code class="python">RiscStackConnectivity(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;, avg_duration_per_connection: float = 0.0, avg_kbps_per_connection: float = 0.0, avg_rtt_per_connection: float = 0.0, connections_seen_via_netstat: int = 0, dest_location: int = 0, dest_location_name: str = '', max_kbps_per_connection: float = 0.0, max_rtt_per_connection: float = 0.0, min_rtt_per_connection: float = 0.0, number_of_distinct_protocols: int = 0, number_of_distinct_source_ip_dest_ip_pairs: int = 0, source_location_name: str = '', source_locationid: int = 0, total_bytes: int = 0, total_duration_per_connection: float = 0.0, total_flows: int = 0) -&gt; None
+</code></pre>
+
+<p>Define the Connectivity resource model schema.
+<h3 id="risc.models.RiscStackConnectivity.avg_duration_per_connection">avg_duration_per_connection</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscStackConnectivity.avg_kbps_per_connection">avg_kbps_per_connection</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscStackConnectivity.avg_rtt_per_connection">avg_rtt_per_connection</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscStackConnectivity.connections_seen_via_netstat">connections_seen_via_netstat</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscStackConnectivity.dest_location">dest_location</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscStackConnectivity.dest_location_name">dest_location_name</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscStackConnectivity.max_kbps_per_connection">max_kbps_per_connection</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscStackConnectivity.max_rtt_per_connection">max_rtt_per_connection</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscStackConnectivity.min_rtt_per_connection">min_rtt_per_connection</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscStackConnectivity.number_of_distinct_protocols">number_of_distinct_protocols</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscStackConnectivity.number_of_distinct_source_ip_dest_ip_pairs">number_of_distinct_source_ip_dest_ip_pairs</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscStackConnectivity.source_location_name">source_location_name</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscStackConnectivity.source_locationid">source_locationid</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscStackConnectivity.total_bytes">total_bytes</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscStackConnectivity.total_duration_per_connection">total_duration_per_connection</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscStackConnectivity.total_flows">total_flows</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h2 id="risc.models.RiscStackConnectivityParent">RiscStackConnectivityParent</h2></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="python">RiscStackConnectivityParent(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;, connectivity: List[Any] = &lt;factory&gt;, returnStatus: str = '', returnStatusDetail: str = '') -&gt; None
+</code></pre>
+
+<p>Define the parent Stack Connectivity resource model schema.
+<h3 id="risc.models.RiscStackConnectivityParent.dataframe">dataframe</h3></p>
+<p>Handle converting the connectivity list of objects to a pandas DataFrame.
+<h3 id="risc.models.RiscStackConnectivityParent.returnStatus">returnStatus</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscStackConnectivityParent.returnStatusDetail">returnStatusDetail</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h2 id="risc.models.RiscDeviceConnectivity">RiscDeviceConnectivity</h2></p>
+<pre><code class="python">RiscDeviceConnectivity(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;, avg_duration: float = 0.0, avg_kbps: float = 0.0, avg_rtt: float = 0.0, dest_application: str = '', dest_application_context: str = '', dest_application_instance: str = '', dest_bytes: int = 0, dest_deviceid: int = 0, dest_ip: str = '', dest_packet_count: int = 0, dest_packet_loss: int = 0, dest_port: int = 0, dest_process: str = '', max_kbps: float = 0.0, max_rtt: float = 0.0, min_rtt: float = 0.0, netstat_count: int = 0, source_application: str = '', source_application_context: str = '', source_application_instance: str = '', source_bytes: int = 0, source_deviceid: int = 0, source_packet_count: int = 0, source_packet_loss: int = 0, source_process: str = '', src_ip: str = '', total_bytes: int = 0, total_duration: float = 0.0, total_packets: int = 0) -&gt; None
+</code></pre>
+
+<p>Define the Device Connectivity resource model schema.
+<h3 id="risc.models.RiscDeviceConnectivity.avg_duration">avg_duration</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscDeviceConnectivity.avg_kbps">avg_kbps</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscDeviceConnectivity.avg_rtt">avg_rtt</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscDeviceConnectivity.dest_application">dest_application</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivity.dest_application_context">dest_application_context</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivity.dest_application_instance">dest_application_instance</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivity.dest_bytes">dest_bytes</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.dest_deviceid">dest_deviceid</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.dest_ip">dest_ip</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivity.dest_packet_count">dest_packet_count</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.dest_packet_loss">dest_packet_loss</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.dest_port">dest_port</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.dest_process">dest_process</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivity.max_kbps">max_kbps</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscDeviceConnectivity.max_rtt">max_rtt</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscDeviceConnectivity.min_rtt">min_rtt</h3></p>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscDeviceConnectivity.netstat_count">netstat_count</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.source_application">source_application</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivity.source_application_context">source_application_context</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivity.source_application_instance">source_application_instance</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivity.source_bytes">source_bytes</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.source_deviceid">source_deviceid</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.source_packet_count">source_packet_count</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.source_packet_loss">source_packet_loss</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.source_process">source_process</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivity.src_ip">src_ip</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivity.total_bytes">total_bytes</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscDeviceConnectivity.total_duration">total_duration</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Convert a string or number to a floating point number, if possible.
+<h3 id="risc.models.RiscDeviceConnectivity.total_packets">total_packets</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h2 id="risc.models.RiscDeviceConnectivityParent">RiscDeviceConnectivityParent</h2></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code class="python">RiscDeviceConnectivityParent(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;, connectivity: List[Any] = &lt;factory&gt;, returnStatus: str = '', returnStatusDetail: str = '') -&gt; None
+</code></pre>
+
+<p>Define the parent Device Connectivity resource model schema.
+<h3 id="risc.models.RiscDeviceConnectivityParent.dataframe">dataframe</h3></p>
+<p>Handle converting the connectivity list of objects to a pandas DataFrame.
+<h3 id="risc.models.RiscDeviceConnectivityParent.returnStatus">returnStatus</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscDeviceConnectivityParent.returnStatusDetail">returnStatusDetail</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h2 id="risc.models.RiscTag">RiscTag</h2></p>
+<pre><code class="python">RiscTag(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;, tagid: int = 0, tagkey: str = '', tagvalue: str = '') -&gt; None
+</code></pre>
+
+<p>Define the Tag resource model schema.
+<h3 id="risc.models.RiscTag.tagid">tagid</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscTag.tagkey">tagkey</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscTag.tagvalue">tagvalue</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h2 id="risc.models.RiscStack">RiscStack</h2></p>
+<pre><code class="python">RiscStack(self, uuid: uuid.UUID = UUID('b3bf4099-a382-4fe5-8af0-04520d10d9d7'), response: requests.models.Response = &lt;Response [None]&gt;, confirmed: str = '', confirmedby: str = 'not set', licensed: int = 0, num_members_with_failed_checks: int = 0, num_stack_members: int = 0, stack_name: str = '', stackid: int = 0, tags: List[Any] = &lt;factory&gt;) -&gt; None
+</code></pre>
+
+<p>Define the Stack resource model schema.
+<h3 id="risc.models.RiscStack.confirmed">confirmed</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscStack.confirmedby">confirmedby</h3></p>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscStack.licensed">licensed</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscStack.num_members_with_failed_checks">num_members_with_failed_checks</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscStack.num_stack_members">num_stack_members</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4
+<h3 id="risc.models.RiscStack.stack_name">stack_name</h3></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.
+<h3 id="risc.models.RiscStack.stackid">stackid</h3></p>
+<p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.  If x is a number, return x.<strong>int</strong>().  For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.  The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int('0b100', base=0)
+4</p>
+</blockquote>
+</blockquote>
+</blockquote>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../main/" title="Main" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Main
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../utils/" title="Utilities" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Utilities
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.ac79c3b0.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+    
+  </body>
+</html>
