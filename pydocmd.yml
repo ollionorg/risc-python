@@ -5,6 +5,8 @@ repo_url: 'https://github.com/2ndWatch/risc-python'
 generate:
   - code/risc/main.md:
     - risc.main++
+  - code/risc/models.md:
+    - risc.models++
   - code/risc/utils.md:
     - risc.utils++
 
@@ -16,6 +18,7 @@ pages:
   - Code:
     - RISC:
       - Main: code/risc/main.md
+      - Models: code/risc/models.md
       - Utilities: code/risc/utils.md
   - Miscellaneous:
     - Security Policy: securitypolicy.md << SECURITY.md
