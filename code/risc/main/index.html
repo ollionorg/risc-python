@@ -576,13 +576,44 @@
 <pre><code class="python">RISC.get_server(self, search: str = '', compare: str = 'hostname') -&gt; Dict[str, Any]
 </code></pre>
 
-<p>Sift through the asset search response and only return the relevant host.
-<h3 id="risc.main.RISC.get_disks">get_disks</h3></p>
-<pre><code class="python">RISC.get_disks(self, search: str, fudge_factor: float = 1.5)
+<p>Sift through the asset search response and only return the relevant host.</p>
+<p>Args:
+    search (str): The value to search for against the assets search API endpoint.
+    compare (str): The key to be used to match the provided search value with.
+        For example, this can be changed from hostname to identifying_ip.
+        Defaults to: hostname.</p>
+<p>Returns:
+    dict: The device asset object, as returned from the RISC API.</p>
+<h3 id="risc.main.RISC.get_application_ips">get_application_ips</h3>
+
+<pre><code class="python">RISC.get_application_ips(self, application: str, identifying_ips_only: bool = True)
 </code></pre>
 
-<p>Get disk data for a specific asset.
-<h2 id="risc.main.main">main</h2></p>
+<p>Get all associated IP addresses for the provided application stack.</p>
+<p>Args:
+    application (str): The application stack name, as identified in RISC.
+    identifying_ips_only (bool): Whether or not to return only the identifying_ip value
+        for each asset found within the application stack. If set to: False, this method
+        will iterate through all ips in the device data object. Defaults to: True.</p>
+<p>Returns:
+    list of str: The list of device IP addresses present in the application stack.</p>
+<h3 id="risc.main.RISC.get_disks">get_disks</h3>
+
+<pre><code class="python">RISC.get_disks(self, search: str, fudge_factor: float = 1.5, only_local_disks: bool = True) -&gt; Dict[str, Any]
+</code></pre>
+
+<p>Get disk data for a specific asset.</p>
+<p>Args:
+    search (str): The asset hostname to lookup.
+    fudge_factor (float): The value multiplier to be used when calculating volume size
+        to be returned.  This can be used to estimate a buffer over current device usage.
+        Defaults to: 1.0 to represent the existing disk usage.
+    only_local_disks (bool): Whether or not to reduce the response to include only local disks.
+        Defaults to: True.</p>
+<p>Returns:
+    dict: The mapping of disk data provided by RISC and additional drive usage data.</p>
+<h2 id="risc.main.main">main</h2>
+
 <pre><code class="python">main() -&gt; None
 </code></pre>
 
