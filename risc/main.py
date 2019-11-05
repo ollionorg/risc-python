@@ -388,16 +388,26 @@ class RISC:
                 if isinstance(asset_data, dict):
                     ip = asset_data.get("identifying_ip", "")
                 elif isinstance(asset_data, list):
-                    ip = next(item["identifying_ip"] for item in asset_data if "identifying_ip" in item)
+                    ip = next(
+                        item["identifying_ip"]
+                        for item in asset_data
+                        if "identifying_ip" in item
+                    )
                 if ip and ip != "NULL":
                     ip_addresses.append(ip)
             else:
                 if isinstance(asset_data, dict):
                     found_ips = asset_data.get("ips", [])
                 elif isinstance(asset_data, list):
-                    found_ips = next(item["ips"] for item in asset_data if "ips" in item)
+                    found_ips = next(
+                        item["ips"] for item in asset_data if "ips" in item
+                    )
                 if found_ips:
-                    ips = [found_ip["ip"] for found_ip in found_ips if found_ip["ip"] != "NULL"]
+                    ips = [
+                        found_ip["ip"]
+                        for found_ip in found_ips
+                        if found_ip["ip"] != "NULL"
+                    ]
                     ip_addresses += ips
         ip_addresses = sorted(list(set(ip_addresses)))
         return ip_addresses
