@@ -382,14 +382,24 @@ class RISC:
             return {}
 
         for asset in stack_assets.json().get("assets", []):
+            asset_data = asset.get("data", {})
             if identifying_ips_only:
-                ip = asset.get("data", {}).get("identifying_ip", "")
-                if ip:
+                # Handle dict and list types differently, because this API has no standard responses or models...
+                if isinstance(asset_data, dict):
+                    ip = asset_data.get("identifying_ip", "")
+                elif isinstance(asset_data, list):
+                    ip = next(item["identifying_ip"] for item in asset_data if "identifying_ip" in item)
+                if ip and ip != "NULL":
                     ip_addresses.append(ip)
             else:
-                found_ips = asset.get("data", {}).get("ips", [])
-                ips = [found_ip["ip"] for found_ip in found_ips]
-                ip_addresses += ips
+                if isinstance(asset_data, dict):
+                    found_ips = asset_data.get("ips", [])
+                elif isinstance(asset_data, list):
+                    found_ips = next(item["ips"] for item in asset_data if "ips" in item)
+                if found_ips:
+                    ips = [found_ip["ip"] for found_ip in found_ips if found_ip["ip"] != "NULL"]
+                    ip_addresses += ips
+        ip_addresses = sorted(list(set(ip_addresses)))
         return ip_addresses
 
     def get_disks(
