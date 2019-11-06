@@ -4,7 +4,7 @@
 import hashlib
 import logging
 import os
-from typing import Any, Dict
+from typing import Any, Dict, List
 
 import fire
 import requests
@@ -168,9 +168,14 @@ class RISC:
         if not self.stack_data:
             logger.error("Stack data unavailable!")
             return {}
-        return next(
-            item for item in self.stack_data["assets"] if item["stack_name"] == name
-        )["stackid"]
+        try:
+            stack_id = next(
+                item for item in self.stack_data["assets"] if item["stack_name"] == name
+            )["stackid"]
+        except Exception as e:
+            print(f"No stack_id found for: {name} - Exception: {e}")
+            return ""
+        return stack_id
 
     def assets_get_assets(
         self,
@@ -359,7 +364,9 @@ class RISC:
             return {}
         return return_data
 
-    def get_application_ips(self, application: str, identifying_ips_only: bool = True):
+    def get_application_ips(
+        self, application: str, identifying_ips_only: bool = True
+    ) -> List[Any]:
         """Get all associated IP addresses for the provided application stack.
 
         Args:
@@ -374,12 +381,14 @@ class RISC:
         """
         ip_addresses = []
         stack_id = self.lookup_stack_id(application)
+        if not stack_id:
+            return []
         stack_assets = self.assets_get_assets(stack_id=stack_id)
         if stack_assets.status_code != 200:
             logger.error(
                 "Failed to retrieve application stack assets for: (%s)" % application
             )
-            return {}
+            return []
 
         for asset in stack_assets.json().get("assets", []):
             asset_data = asset.get("data", {})
