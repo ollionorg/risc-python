@@ -6,10 +6,15 @@ from typing import Any, Dict
 from risc.__version__ import __version__ as risc_version
 
 
-def get_user_agent(user_agent: str = "risc-python"):
+def get_user_agent(user_agent: str = "risc-python") -> str:
     """Get the current module version."""
     user_agent_str: str = f"{user_agent}/{risc_version}"
     return user_agent_str
+
+
+def roundup(x: float) -> int:
+    """Round the provided float up to the nearest tens."""
+    return int(math.ceil(x / 10.0)) * 10
 
 
 def format_bytes(size) -> Dict[str, Any]:
@@ -21,7 +26,7 @@ def format_bytes(size) -> Dict[str, Any]:
     while size > power:
         size /= power
         n += 1
-    return {"size": math.ceil(size), "label": f"{power_labels[n]}B"}
+    return {"size": roundup(size), "label": f"{power_labels[n]}B"}
 
 
 def handle_disk_sizing(
@@ -32,5 +37,5 @@ def handle_disk_sizing(
     total = int(total_size)
     used = total - free
     proposed_size = used * fudge_factor
-    recommended = proposed_size if proposed_size <= total else total
+    recommended = proposed_size if proposed_size <= total and proposed_size != 0 else total
     return format_bytes(recommended)
