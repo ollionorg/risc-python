@@ -471,7 +471,7 @@
 
 <p>Define the RISC models module.
 <h2 id="risc.models.AbstractRiscModel">AbstractRiscModel</h2></p>
-<pre><code class="python">AbstractRiscModel(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8')) -&gt; None
+<pre><code class="python">AbstractRiscModel(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda')) -&gt; None
 </code></pre>
 
 <p>Abstract resource model for all RISC models.
@@ -540,7 +540,7 @@ is_safe     An enum indicating whether the UUID has been generated in
 
 <p>Handle the casting of an object to the provided object type.
 <h2 id="risc.models.RiscResponse">RiscResponse</h2></p>
-<pre><code class="python">RiscResponse(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7f201f3f7ad0&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0) -&gt; None
+<pre><code class="python">RiscResponse(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7f5a58dec610&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0) -&gt; None
 </code></pre>
 
 <p>Abstract resource model for all RISC models.
@@ -613,7 +613,7 @@ s.get('https://httpbin.org/get')
 </blockquote>
 <h2 id="risc.models.RiscResourceModel">RiscResourceModel</h2>
 
-<pre><code class="python">RiscResourceModel(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;) -&gt; None
+<pre><code class="python">RiscResourceModel(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;) -&gt; None
 </code></pre>
 
 <p>Abstract resource model for all RISC models.
@@ -622,7 +622,7 @@ s.get('https://httpbin.org/get')
 server's response to an HTTP request.</p>
 <h2 id="risc.models.RiscAssessment">RiscAssessment</h2>
 
-<pre><code class="python">RiscAssessment(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;, address: str = '', appliance_public_ip: str = '', assessment_code: str = '', assessment_stage_description: str = '', assessment_stage_name: str = '', city: str = '', company_name: str = '', country: str = '', end_date: str = '', start_date: str = '', state: str = '', zip: str = '', json: Dict[str, str] = &lt;factory&gt;) -&gt; None
+<pre><code class="python">RiscAssessment(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;, address: str = '', appliance_public_ip: str = '', assessment_code: str = '', assessment_stage_description: str = '', assessment_stage_name: str = '', city: str = '', company_name: str = '', country: str = '', end_date: str = '', start_date: str = '', state: str = '', zip: str = '', json: Dict[str, str] = &lt;factory&gt;) -&gt; None
 </code></pre>
 
 <p>Define the Assessment resource model schema.
@@ -749,17 +749,17 @@ or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.
 <h2 id="risc.models.RiscAssessments">RiscAssessments</h2></p>
-<pre><code class="python">RiscAssessments(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7f201f3f7ad0&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0, assessments: List[Any] = &lt;factory&gt;) -&gt; None
+<pre><code class="python">RiscAssessments(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7f5a58dec610&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0, assessments: List[Any] = &lt;factory&gt;) -&gt; None
 </code></pre>
 
 <p>Define the Assessments resource model schema.
 <h2 id="risc.models.RiscStacks">RiscStacks</h2></p>
-<pre><code class="python">RiscStacks(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7f201f3f7ad0&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0, stacks: List[Any] = &lt;factory&gt;) -&gt; None
+<pre><code class="python">RiscStacks(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7f5a58dec610&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0, stacks: List[Any] = &lt;factory&gt;) -&gt; None
 </code></pre>
 
 <p>Define the Stacks resource model schema.
 <h2 id="risc.models.RiscStackConnectivity">RiscStackConnectivity</h2></p>
-<pre><code class="python">RiscStackConnectivity(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;, avg_duration_per_connection: float = 0.0, avg_kbps_per_connection: float = 0.0, avg_rtt_per_connection: float = 0.0, connections_seen_via_netstat: int = 0, dest_location: int = 0, dest_location_name: str = '', max_kbps_per_connection: float = 0.0, max_rtt_per_connection: float = 0.0, min_rtt_per_connection: float = 0.0, number_of_distinct_protocols: int = 0, number_of_distinct_source_ip_dest_ip_pairs: int = 0, source_location_name: str = '', source_locationid: int = 0, total_bytes: int = 0, total_duration_per_connection: float = 0.0, total_flows: int = 0) -&gt; None
+<pre><code class="python">RiscStackConnectivity(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;, avg_duration_per_connection: float = 0.0, avg_kbps_per_connection: float = 0.0, avg_rtt_per_connection: float = 0.0, connections_seen_via_netstat: int = 0, dest_location: int = 0, dest_location_name: str = '', max_kbps_per_connection: float = 0.0, max_rtt_per_connection: float = 0.0, min_rtt_per_connection: float = 0.0, number_of_distinct_protocols: int = 0, number_of_distinct_source_ip_dest_ip_pairs: int = 0, source_location_name: str = '', source_locationid: int = 0, total_bytes: int = 0, total_duration_per_connection: float = 0.0, total_flows: int = 0) -&gt; None
 </code></pre>
 
 <p>Define the Connectivity resource model schema.
@@ -931,7 +931,7 @@ Base 0 means to interpret the base from the string as an integer literal.</p>
 </blockquote>
 </blockquote>
 </blockquote>
-<pre><code class="python">RiscStackConnectivityParent(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;, connectivity: List[Any] = &lt;factory&gt;, returnStatus: str = '', returnStatusDetail: str = '') -&gt; None
+<pre><code class="python">RiscStackConnectivityParent(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;, connectivity: List[Any] = &lt;factory&gt;, returnStatus: str = '', returnStatusDetail: str = '') -&gt; None
 </code></pre>
 
 <p>Define the parent Stack Connectivity resource model schema.
@@ -958,7 +958,7 @@ or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.
 <h2 id="risc.models.RiscDeviceConnectivity">RiscDeviceConnectivity</h2></p>
-<pre><code class="python">RiscDeviceConnectivity(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;, avg_duration: float = 0.0, avg_kbps: float = 0.0, avg_rtt: float = 0.0, dest_application: str = '', dest_application_context: str = '', dest_application_instance: str = '', dest_bytes: int = 0, dest_deviceid: int = 0, dest_ip: str = '', dest_packet_count: int = 0, dest_packet_loss: int = 0, dest_port: int = 0, dest_process: str = '', max_kbps: float = 0.0, max_rtt: float = 0.0, min_rtt: float = 0.0, netstat_count: int = 0, source_application: str = '', source_application_context: str = '', source_application_instance: str = '', source_bytes: int = 0, source_deviceid: int = 0, source_packet_count: int = 0, source_packet_loss: int = 0, source_process: str = '', src_ip: str = '', total_bytes: int = 0, total_duration: float = 0.0, total_packets: int = 0) -&gt; None
+<pre><code class="python">RiscDeviceConnectivity(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;, avg_duration: float = 0.0, avg_kbps: float = 0.0, avg_rtt: float = 0.0, dest_application: str = '', dest_application_context: str = '', dest_application_instance: str = '', dest_bytes: int = 0, dest_deviceid: int = 0, dest_ip: str = '', dest_packet_count: int = 0, dest_packet_loss: int = 0, dest_port: int = 0, dest_process: str = '', max_kbps: float = 0.0, max_rtt: float = 0.0, min_rtt: float = 0.0, netstat_count: int = 0, source_application: str = '', source_application_context: str = '', source_application_instance: str = '', source_bytes: int = 0, source_deviceid: int = 0, source_packet_count: int = 0, source_packet_loss: int = 0, source_process: str = '', src_ip: str = '', total_bytes: int = 0, total_duration: float = 0.0, total_packets: int = 0) -&gt; None
 </code></pre>
 
 <p>Define the Device Connectivity resource model schema.
@@ -1305,7 +1305,7 @@ Base 0 means to interpret the base from the string as an integer literal.</p>
 </blockquote>
 </blockquote>
 </blockquote>
-<pre><code class="python">RiscDeviceConnectivityParent(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;, connectivity: List[Any] = &lt;factory&gt;, returnStatus: str = '', returnStatusDetail: str = '') -&gt; None
+<pre><code class="python">RiscDeviceConnectivityParent(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;, connectivity: List[Any] = &lt;factory&gt;, returnStatus: str = '', returnStatusDetail: str = '') -&gt; None
 </code></pre>
 
 <p>Define the parent Device Connectivity resource model schema.
@@ -1332,7 +1332,7 @@ or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.
 <h2 id="risc.models.RiscTag">RiscTag</h2></p>
-<pre><code class="python">RiscTag(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;, tagid: int = 0, tagkey: str = '', tagvalue: str = '') -&gt; None
+<pre><code class="python">RiscTag(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;, tagid: int = 0, tagkey: str = '', tagvalue: str = '') -&gt; None
 </code></pre>
 
 <p>Define the Tag resource model schema.
@@ -1376,7 +1376,7 @@ or repr(object).
 encoding defaults to sys.getdefaultencoding().
 errors defaults to 'strict'.
 <h2 id="risc.models.RiscStack">RiscStack</h2></p>
-<pre><code class="python">RiscStack(self, uuid: uuid.UUID = UUID('a8f5a67b-8d14-491e-b9e9-4840a1d15bb8'), response: requests.models.Response = &lt;Response [None]&gt;, confirmed: str = '', confirmedby: str = 'not set', licensed: int = 0, num_members_with_failed_checks: int = 0, num_stack_members: int = 0, stack_name: str = '', stackid: int = 0, tags: List[Any] = &lt;factory&gt;) -&gt; None
+<pre><code class="python">RiscStack(self, uuid: uuid.UUID = UUID('ac22e69a-e717-4008-83f4-e16affd0dbda'), response: requests.models.Response = &lt;Response [None]&gt;, confirmed: str = '', confirmedby: str = 'not set', licensed: int = 0, num_members_with_failed_checks: int = 0, num_stack_members: int = 0, stack_name: str = '', stackid: int = 0, tags: List[Any] = &lt;factory&gt;) -&gt; None
 </code></pre>
 
 <p>Define the Stack resource model schema.
