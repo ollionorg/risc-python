@@ -11,13 +11,13 @@ import requests
 from requests.models import Response
 from requests.sessions import Session
 
-from .models import (
+from risc.models import (
     RiscAssessment,
     RiscAssessments,
     RiscDeviceConnectivityParent,
     RiscStackConnectivityParent,
 )
-from .utils import format_bytes, get_user_agent, handle_disk_sizing
+from risc.utils import get_user_agent, handle_disk_sizing
 
 logger = logging.getLogger(__name__)
 
@@ -347,21 +347,47 @@ class RISC:
             dict: The device asset object, as returned from the RISC API.
 
         """
+        return_data: Dict[str, Any] = {}
         response: Response = self.assets_search(search=search)
         if response.status_code != 200:
             logger.error("Failure fetching host data!")
             return {}
 
         host_data = response.json().get("assets", [])
-        try:
-            return_data = next(
-                item
-                for item in host_data
-                if item["data"][compare].lower() == search.lower()
-            )
-        except (KeyError, IndexError):
-            logger.error("Unable to find the specified server: (%s)!" % search)
-            return {}
+        search = search.lower()
+        for asset in host_data:
+            asset_val = asset.get("data")
+            if isinstance(asset_val, list):
+                try:
+                    return_data = next(
+                        item
+                        for item in asset_val
+                        if item.get(compare, "").lower() == search
+                    )
+                except (KeyError, IndexError, StopIteration):
+                    pass
+                except Exception as e:
+                    logger.error(
+                        "Unhandled exception encountered attempting to retrieve server data: (%s) - Error: (%s)"
+                        % (search, e)
+                    )
+            elif isinstance(asset_val, dict):
+                asset_val = asset.get("data", {})
+                found_hostname = asset.get(compare, "").lower()
+                if found_hostname == search:
+                    return_data = asset_val
+        if not return_data:
+            try:
+                return_data = next(
+                    item
+                    for item in host_data
+                    if item["data"][compare].lower() == search
+                )
+            except (KeyError, IndexError, StopIteration):
+                logger.error(
+                    "Unable to find the specified server: (%s) - Defaulting to empty dict!"
+                    % search
+                )
         return return_data
 
     def get_application_ips(
@@ -379,16 +405,16 @@ class RISC:
             list of str: The list of device IP addresses present in the application stack.
 
         """
-        ip_addresses = []
+        ip_addresses: List[str] = []
         stack_id = self.lookup_stack_id(application)
         if not stack_id:
-            return []
+            return ip_addresses
         stack_assets = self.assets_get_assets(stack_id=stack_id)
         if stack_assets.status_code != 200:
             logger.error(
                 "Failed to retrieve application stack assets for: (%s)" % application
             )
-            return []
+            return ip_addresses
 
         for asset in stack_assets.json().get("assets", []):
             asset_data = asset.get("data", {})
@@ -440,8 +466,13 @@ class RISC:
         """
         data = {}
         asset = self.get_server(search=search)
-        disks = asset.get("data", {}).get("disks_logical", [])
-        for disk in disks:
+        disks = asset.get("data", {})
+        if disks:
+            _disks = disks.get("disks_logical", [])
+        else:
+            _disks = asset.get("disks_logical", [])
+
+        for disk in _disks:
             # If the disk isn't a local disk, i.e. Compact, ignore it.
             if only_local_disks and disk["disk_type"] != "Local Disk":
                 continue
