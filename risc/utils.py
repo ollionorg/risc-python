@@ -37,5 +37,7 @@ def handle_disk_sizing(
     total = int(total_size)
     used = total - free
     proposed_size = used * fudge_factor
-    recommended = proposed_size if proposed_size <= total and proposed_size != 0 else total
+    recommended = (
+        proposed_size if proposed_size <= total and proposed_size != 0 else total
+    )
     return format_bytes(recommended)
