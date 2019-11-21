@@ -1,5 +1,16 @@
 # Change Log
 
+## [v0.1.1](https://github.com/2ndWatch/risc-python/tree/v0.1.1) (2019-11-20)
+[Full Changelog](https://github.com/2ndWatch/risc-python/compare/v0.1.0...v0.1.1)
+
+**Implemented enhancements:**
+
+- Adjust get\_server handling for weird nesting and increment version [\#8](https://github.com/2ndWatch/risc-python/pull/8) ([mbeacom](https://github.com/mbeacom))
+
+**Fixed bugs:**
+
+- Adjust get\\_server handling for weird nesting and increment version [\#8](https://github.com/2ndWatch/risc-python/pull/8) ([mbeacom](https://github.com/mbeacom))
+
 ## [v0.1.0](https://github.com/2ndWatch/risc-python/tree/v0.1.0) (2019-11-11)
 [Full Changelog](https://github.com/2ndWatch/risc-python/compare/v0.0.4...v0.1.0)
 
