@@ -480,12 +480,29 @@
 </code></pre>
 
 <p>Round the provided float up to the nearest tens.
-<h2 id="risc.utils.format_bytes">format_bytes</h2></p>
-<pre><code class="python">format_bytes(size) -&gt; Dict[str, Any]
+<h2 id="risc.utils.determine_bytes">determine_bytes</h2></p>
+<pre><code class="python">determine_bytes(size: float) -&gt; Dict[str, Any]
 </code></pre>
 
-<p>Format bytes to KB, MB, GB, and TB.
-<h2 id="risc.utils.handle_disk_sizing">handle_disk_sizing</h2></p>
+<p>Determine the highest denomination from bytes to KB, MB, GB, and TB.</p>
+<p>Args:
+    size (int): The size, in bytes.</p>
+<p>Returns:
+    dict: The dictionary mapping of highest bytes denomination and the equivalent size.</p>
+<h2 id="risc.utils.format_bytes">format_bytes</h2>
+
+<pre><code class="python">format_bytes(size: float, denomination: str = 'GB') -&gt; float
+</code></pre>
+
+<p>Convert bytes to the desired denomination.</p>
+<p>Args:
+    size (int): The size, in bytes.
+    denomination (str): The byte denomination to convert size to.
+        Defaults to: GB. Options are: KB, MB, GB, and TB.</p>
+<p>Returns:
+    float: The float formatted to the requested denomination.</p>
+<h2 id="risc.utils.handle_disk_sizing">handle_disk_sizing</h2>
+
 <pre><code class="python">handle_disk_sizing(total_size: str, free_size: str, fudge_factor: float = 1.5) -&gt; Dict[str, Any]
 </code></pre>
 
