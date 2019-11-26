@@ -1,4 +1,4 @@
-FROM python:3.7-slim-buster
+FROM python:3.8-slim
 
 WORKDIR /app
 
@@ -25,7 +25,6 @@ ARG VERSION
 
 LABEL io.github.2ndWatch.description="RISC CLI and API client module" \
     io.github.2ndWatch.documentation="https://2ndWatch.github.io/risc-python/" \
-    io.github.2ndWatch.licenses="MIT" \
     io.github.2ndWatch.image.revision=$SHA1 \
     io.github.2ndWatch.image.version=$VERSION \
     io.github.2ndWatch.image.vendor="2ndWatch" \

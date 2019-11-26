@@ -5,7 +5,6 @@ import uuid as _uuid
 from dataclasses import dataclass, field
 from typing import Any, Dict, List
 
-import pandas as pd
 from requests.models import Response
 from requests.sessions import Session
 
@@ -180,6 +179,11 @@ class RiscStackConnectivityParent(RiscResourceModel):
     @property
     def dataframe(self):
         """Handle converting the connectivity list of objects to a pandas DataFrame."""
+        try:
+            import pandas as pd
+        except ImportError:
+            logger.info("Pandas currently not installed! DataFrame support disabled!")
+            return None
         connectivity_dict: List[Dict[str, Any]] = self.response.json().get(
             "connectivity", []
         )
@@ -239,6 +243,11 @@ class RiscDeviceConnectivityParent(RiscResourceModel):
 
     @property
     def dataframe(self):
+        try:
+            import pandas as pd
+        except ImportError:
+            logger.info("Pandas currently not installed! DataFrame support disabled!")
+            return None
         """Handle converting the connectivity list of objects to a pandas DataFrame."""
         connectivity_dict: List[Dict[str, Any]] = self.response.json().get(
             "connectivity", []

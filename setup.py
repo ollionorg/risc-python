@@ -1,13 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""Define the RISC module setup.
-
-Note: To use the 'upload' functionality of this file, you must:
-
-`$ pipenv install twine --dev`
-
-"""
-
+"""Define the RISC module setup."""
 import io
 import os
 import sys
@@ -40,7 +33,8 @@ EXTRAS: Dict[str, List[str]] = {
         "bandit",
         "mypy",
         "twine",
-    ]
+    ],
+    "pandas": ["pandas",],
 }
 
 here = os.path.abspath(os.path.dirname(__file__))

@@ -48,7 +48,7 @@ def format_bytes(size: float, denomination: str = "GB") -> float:
         float: The float formatted to the requested denomination.
 
     """
-    bytes_map = {"KB": 2**10, "MB": 1024**2, "GB": 1024**3, "TB": 1024**4}
+    bytes_map = {"KB": 2 ** 10, "MB": 1024 ** 2, "GB": 1024 ** 3, "TB": 1024 ** 4}
     if denomination not in bytes_map.keys():
         raise ValueError(
             f"Invalid option provided to format_bytes denomination argument! Options are: {bytes_map.keys()}"
@@ -69,5 +69,8 @@ def handle_disk_sizing(
         proposed_size if proposed_size <= total and proposed_size != 0 else total
     )
     recommended_gb: float = format_bytes(recommended)
-    formatted_recommendation: Dict[str, Any] = {"size": roundup(recommended_gb), "label": "GB"}
+    formatted_recommendation: Dict[str, Any] = {
+        "size": roundup(recommended_gb),
+        "label": "GB",
+    }
     return formatted_recommendation
