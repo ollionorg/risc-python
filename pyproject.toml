@@ -35,7 +35,7 @@ line_length = 120
 
 [tool.poetry]
 name = "risc"
-version = "0.2.0"
+version = "0.2.1"
 description = "Python client and CLI for RISC"
 authors = ["Mark Beacom <mbeacom@2ndwatch.com>"]
 license = "MIT"
@@ -87,7 +87,9 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.7"
+fire = "^0.3.0"
+requests = "^2.23.0"
 
 [tool.poetry.dev-dependencies]
 isort = {extras = ["pyproject"], version = "^4.3.21"}
