@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.0">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
       
@@ -40,17 +40,17 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -82,9 +82,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../.." title="RISC Python Client and CLI" class="md-header-nav__button md-logo">
+        <a href="../../.." title="RISC Python Client and CLI" aria-label="RISC Python Client and CLI" class="md-header-nav__button md-logo">
           
-            <img src="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png" width="24" height="24">
+            <img alt="logo" src="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png" width="24" height="24">
           
         </a>
       </div>
@@ -113,7 +113,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -150,7 +150,7 @@
     </div>
   
   <div class="md-source__repository">
-    GitHub
+    2ndWatch/risc-python
   </div>
 </a>
           </div>
@@ -233,7 +233,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="../../.." title="RISC Python Client and CLI" class="md-nav__button md-logo">
       
-        <img src="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png" width="48" height="48">
+        <img alt="logo" src="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png" width="48" height="48">
       
     </a>
     RISC Python Client and CLI
@@ -254,7 +254,7 @@
     </div>
   
   <div class="md-source__repository">
-    GitHub
+    2ndWatch/risc-python
   </div>
 </a>
     </div>
@@ -471,17 +471,17 @@
 
 <p>Define the RISC primary module.
 <h2 id="risc.main.RISC">RISC</h2></p>
-<pre><code class="python">RISC(self, api_token: str = '', user_id: str = '', password: str = '') -&gt; None
+<pre><code class="python">RISC(self, api_token: str = '', user_id: str = '', password: str = '')
 </code></pre>
 
 <p>Define the RISC toplevel class.
 <h3 id="risc.main.RISC.build_auth">build_auth</h3></p>
-<pre><code class="python">RISC.build_auth(self) -&gt; Dict[str, str]
+<pre><code class="python">RISC.build_auth()
 </code></pre>
 
 <p>Build the API authentication token.
 <h3 id="risc.main.RISC.get_assessments">get_assessments</h3></p>
-<pre><code class="python">RISC.get_assessments(self) -&gt; risc.models.RiscAssessments
+<pre><code class="python">RISC.get_assessments()
 </code></pre>
 
 <p>Get the RISC assessment code.</p>
@@ -489,7 +489,7 @@
     str: The RISC assessment code.</p>
 <h3 id="risc.main.RISC.get_assessment">get_assessment</h3>
 
-<pre><code class="python">RISC.get_assessment(self, **kwargs) -&gt; risc.models.RiscAssessment
+<pre><code class="python">RISC.get_assessment(**kwargs)
 </code></pre>
 
 <p>Get the RISC assessment code.</p>
@@ -497,7 +497,7 @@
     str: The RISC assessment code.</p>
 <h3 id="risc.main.RISC.get_auth_token">get_auth_token</h3>
 
-<pre><code class="python">RISC.get_auth_token(self)
+<pre><code class="python">RISC.get_auth_token()
 </code></pre>
 
 <p>Authenticate with RISC.</p>
@@ -505,87 +505,93 @@
     str: The final authentication token to be used with subsequent requests.</p>
 <h3 id="risc.main.RISC.assets_get_summary">assets_get_summary</h3>
 
-<pre><code class="python">RISC.assets_get_summary(self)
+<pre><code class="python">RISC.assets_get_summary()
 </code></pre>
 
 <p>Use to retrieve a list of device types and counts.
 <h3 id="risc.main.RISC.assets_get_assets">assets_get_assets</h3></p>
-<pre><code class="python">RISC.assets_get_assets(self, device_type: str = '', stack_id: int = 0, device_id: str = '', tag_id: str = '', page: int = 0) -&gt; requests.models.Response
+<pre><code class="python">RISC.assets_get_assets(device_type: str = '',
+                       stack_id: int = 0,
+                       device_id: str = '',
+                       tag_id: str = '',
+                       page: int = 0)
 </code></pre>
 
 <p>Use to retrieve a list of device types and counts.
 <h3 id="risc.main.RISC.stacks_get_summary">stacks_get_summary</h3></p>
-<pre><code class="python">RISC.stacks_get_summary(self)
+<pre><code class="python">RISC.stacks_get_summary()
 </code></pre>
 
 <p>Use to retrieve a list of stacks.
 <h3 id="risc.main.RISC.stacks_get_summary_cost">stacks_get_summary_cost</h3></p>
-<pre><code class="python">RISC.stacks_get_summary_cost(self, provider_id: str)
+<pre><code class="python">RISC.stacks_get_summary_cost(provider_id: str)
 </code></pre>
 
 <p>Use to retrieve a list of stack costs.
 <h3 id="risc.main.RISC.stacks_get_connectivity">stacks_get_connectivity</h3></p>
-<pre><code class="python">RISC.stacks_get_connectivity(self, stack_id: str = '') -&gt; risc.models.RiscStackConnectivityParent
+<pre><code class="python">RISC.stacks_get_connectivity(stack_id: str = '')
 </code></pre>
 
 <p>Use to retrieve a list of connected stacks.
 <h3 id="risc.main.RISC.stacks_get_device_connectivity">stacks_get_device_connectivity</h3></p>
-<pre><code class="python">RISC.stacks_get_device_connectivity(self, stack_id: int, connectivity_type: str = 'internal', page: int = 0) -&gt; risc.models.RiscDeviceConnectivityParent
+<pre><code class="python">RISC.stacks_get_device_connectivity(stack_id: int,
+                                    connectivity_type: str = 'internal',
+                                    page: int = 0)
 </code></pre>
 
 <p>Use to retrieve a list of connected stacks.
 <h3 id="risc.main.RISC.iaas_get_providers">iaas_get_providers</h3></p>
-<pre><code class="python">RISC.iaas_get_providers(self)
+<pre><code class="python">RISC.iaas_get_providers()
 </code></pre>
 
 <p>Use to retrieve a list of IaaS providers.
 <h3 id="risc.main.RISC.iaas_pricing">iaas_pricing</h3></p>
-<pre><code class="python">RISC.iaas_pricing(self, payload: Dict[str, str])
+<pre><code class="python">RISC.iaas_pricing(payload: typing.Dict[str, str])
 </code></pre>
 
 <p>Use to retrieve a list of IaaS pricing.
 <h3 id="risc.main.RISC.tags_get_tags">tags_get_tags</h3></p>
-<pre><code class="python">RISC.tags_get_tags(self, payload: Dict[str, str])
+<pre><code class="python">RISC.tags_get_tags(payload: typing.Dict[str, str])
 </code></pre>
 
 <p>Use to retrieve a list of IaaS providers.
 <h3 id="risc.main.RISC.tags_add_tags">tags_add_tags</h3></p>
-<pre><code class="python">RISC.tags_add_tags(self, payload: Dict[str, str])
+<pre><code class="python">RISC.tags_add_tags(payload: typing.Dict[str, str])
 </code></pre>
 
 <p>Use to retrieve a list of IaaS providers.
 <h3 id="risc.main.RISC.assets_search">assets_search</h3></p>
-<pre><code class="python">RISC.assets_search(self, search: str = '')
+<pre><code class="python">RISC.assets_search(search: str = '')
 </code></pre>
 
 <p>Get RISC assessment data.
 <h3 id="risc.main.RISC.ucel_get_checks">ucel_get_checks</h3></p>
-<pre><code class="python">RISC.ucel_get_checks(self, device_id: str = '')
+<pre><code class="python">RISC.ucel_get_checks(device_id: str = '')
 </code></pre>
 
 <p>Use to retrieve a list of checks that have been run against devices.
 <h3 id="risc.main.RISC.ucel_get_assets">ucel_get_assets</h3></p>
-<pre><code class="python">RISC.ucel_get_assets(self, check_id: str = '')
+<pre><code class="python">RISC.ucel_get_assets(check_id: str = '')
 </code></pre>
 
 <p>Use to retrieve data on the device(s) by check.
 <h3 id="risc.main.RISC.ucel_get_assets_paginated">ucel_get_assets_paginated</h3></p>
-<pre><code class="python">RISC.ucel_get_assets_paginated(self, check_id: str = '', page: int = 1)
+<pre><code class="python">RISC.ucel_get_assets_paginated(check_id: str = '', page: int = 1)
 </code></pre>
 
 <p>Use to retrieve data on the device(s) by check.
 <h3 id="risc.main.RISC.stacks_get_listeners">stacks_get_listeners</h3></p>
-<pre><code class="python">RISC.stacks_get_listeners(self, stack_id: int)
+<pre><code class="python">RISC.stacks_get_listeners(stack_id: int)
 </code></pre>
 
 <p>Use to retrieve a list of listeners in a stack.
 <h3 id="risc.main.RISC.get_swagger">get_swagger</h3></p>
-<pre><code class="python">RISC.get_swagger(self)
+<pre><code class="python">RISC.get_swagger()
 </code></pre>
 
 <p>Fetch the swagger API configuration file.
 <h3 id="risc.main.RISC.get_server">get_server</h3></p>
-<pre><code class="python">RISC.get_server(self, search: str = '', compare: str = 'hostname') -&gt; Dict[str, Any]
+<pre><code class="python">RISC.get_server(search: str = '', compare: str = 'hostname')
 </code></pre>
 
 <p>Sift through the asset search response and only return the relevant host.</p>
@@ -598,7 +604,8 @@
     dict: The device asset object, as returned from the RISC API.</p>
 <h3 id="risc.main.RISC.get_application_ips">get_application_ips</h3>
 
-<pre><code class="python">RISC.get_application_ips(self, application: str, identifying_ips_only: bool = True) -&gt; List[Any]
+<pre><code class="python">RISC.get_application_ips(application: str,
+                         identifying_ips_only: bool = True)
 </code></pre>
 
 <p>Get all associated IP addresses for the provided application stack.</p>
@@ -611,7 +618,9 @@
     list of str: The list of device IP addresses present in the application stack.</p>
 <h3 id="risc.main.RISC.get_disks">get_disks</h3>
 
-<pre><code class="python">RISC.get_disks(self, search: str, fudge_factor: float = 1.5, only_local_disks: bool = True) -&gt; Dict[str, Any]
+<pre><code class="python">RISC.get_disks(search: str,
+               fudge_factor: float = 1.5,
+               only_local_disks: bool = True)
 </code></pre>
 
 <p>Get disk data for a specific asset.</p>
@@ -626,12 +635,13 @@
     dict: The mapping of disk data provided by RISC and additional drive usage data.</p>
 <h2 id="risc.main.main">main</h2>
 
-<pre><code class="python">main() -&gt; None
+<pre><code class="python">main()
 </code></pre>
 
 <p>Define the main entry method for the CLI.</p>
                 
                   
+                
                 
               
               
@@ -687,9 +697,9 @@
       <div class="md-footer-copyright">
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
@@ -699,9 +709,9 @@
       
     </div>
     
-      <script src="../../../assets/javascripts/application.a8b5e56f.js"></script>
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../../.."}})</script>
       
     
   </body>

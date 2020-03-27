@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.0">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-4.6.3">
     
     
       
@@ -40,17 +40,17 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.adb8469c.css">
       
       
     
     
-      <script src="../../../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../../../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -82,9 +82,9 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="../../.." title="RISC Python Client and CLI" class="md-header-nav__button md-logo">
+        <a href="../../.." title="RISC Python Client and CLI" aria-label="RISC Python Client and CLI" class="md-header-nav__button md-logo">
           
-            <img src="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png" width="24" height="24">
+            <img alt="logo" src="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png" width="24" height="24">
           
         </a>
       </div>
@@ -113,7 +113,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -150,7 +150,7 @@
     </div>
   
   <div class="md-source__repository">
-    GitHub
+    2ndWatch/risc-python
   </div>
 </a>
           </div>
@@ -233,7 +233,7 @@
   <label class="md-nav__title md-nav__title--site" for="__drawer">
     <a href="../../.." title="RISC Python Client and CLI" class="md-nav__button md-logo">
       
-        <img src="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png" width="48" height="48">
+        <img alt="logo" src="https://www.2ndwatch.com/wp-content/uploads/2017/06/2nd-Watch-Logo_white-text-250x94.png" width="48" height="48">
       
     </a>
     RISC Python Client and CLI
@@ -254,7 +254,7 @@
     </div>
   
   <div class="md-source__repository">
-    GitHub
+    2ndWatch/risc-python
   </div>
 </a>
     </div>
@@ -471,7 +471,8 @@
 
 <p>Define the RISC models module.
 <h2 id="risc.models.AbstractRiscModel">AbstractRiscModel</h2></p>
-<pre><code class="python">AbstractRiscModel(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936')) -&gt; None
+<pre><code class="python">AbstractRiscModel(
+    self, uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'))
 </code></pre>
 
 <p>Abstract resource model for all RISC models.
@@ -480,1012 +481,358 @@
 <h3 id="risc.models.AbstractRiscModel.to_dict_items">to_dict_items</h3></p>
 <p>Get the dictionary items of the model's attributes.
 <h3 id="risc.models.AbstractRiscModel.uuid">uuid</h3></p>
-<p>Instances of the UUID class represent UUIDs as specified in RFC 4122.
-UUID objects are immutable, hashable, and usable as dictionary keys.
-Converting a UUID to a string with str() yields something in the form
-'12345678-1234-1234-1234-123456789abc'.  The UUID constructor accepts
-five possible forms: a similar string of hexadecimal digits, or a tuple
-of six integer fields (with 32-bit, 16-bit, 16-bit, 8-bit, 8-bit, and
-48-bit values respectively) as an argument named 'fields', or a string
-of 16 bytes (with all the integer fields in big-endian order) as an
-argument named 'bytes', or a string of 16 bytes (with the first three
-fields in little-endian order) as an argument named 'bytes_le', or a
-single 128-bit integer as an argument named 'int'.</p>
-<p>UUIDs have these read-only attributes:</p>
-<pre><code>bytes       the UUID as a 16-byte string (containing the six
-            integer fields in big-endian byte order)
-
-bytes_le    the UUID as a 16-byte string (with time_low, time_mid,
-            and time_hi_version in little-endian byte order)
-
-fields      a tuple of the six integer fields of the UUID,
-            which are also available as six individual attributes
-            and two derived attributes:
-
-    time_low                the first 32 bits of the UUID
-    time_mid                the next 16 bits of the UUID
-    time_hi_version         the next 16 bits of the UUID
-    clock_seq_hi_variant    the next 8 bits of the UUID
-    clock_seq_low           the next 8 bits of the UUID
-    node                    the last 48 bits of the UUID
-
-    time                    the 60-bit timestamp
-    clock_seq               the 14-bit sequence number
-
-hex         the UUID as a 32-character hexadecimal string
-
-int         the UUID as a 128-bit integer
-
-urn         the UUID as a URN as specified in RFC 4122
-
-variant     the UUID variant (one of the constants RESERVED_NCS,
-            RFC_4122, RESERVED_MICROSOFT, or RESERVED_FUTURE)
-
-version     the UUID version number (1 through 5, meaningful only
-            when the variant is RFC_4122)
-
-is_safe     An enum indicating whether the UUID has been generated in
-            a way that is safe for multiprocessing applications, via
-            uuid_generate_time_safe(3).
-</code></pre>
 <h3 id="risc.models.AbstractRiscModel.to_list_factory">to_list_factory</h3>
 
-<pre><code class="python">AbstractRiscModel.to_list_factory(self, class_type: Any, factory_objects: List[Any]) -&gt; List[Any]
+<pre><code class="python">AbstractRiscModel.to_list_factory(
+    class_type: typing.Any, factory_objects: typing.List[typing.Any])
 </code></pre>
 
 <p>Handle the casting of lists to a list of the provided object type.
 <h3 id="risc.models.AbstractRiscModel.to_obj_factory">to_obj_factory</h3></p>
-<pre><code class="python">AbstractRiscModel.to_obj_factory(self, class_type: Any, factory_object: Any) -&gt; Any
+<pre><code class="python">AbstractRiscModel.to_obj_factory(class_type: typing.Any,
+                                 factory_object: typing.Any)
 </code></pre>
 
 <p>Handle the casting of an object to the provided object type.
 <h2 id="risc.models.RiscResponse">RiscResponse</h2></p>
-<pre><code class="python">RiscResponse(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7fbd24159ad0&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0) -&gt; None
+<pre><code class="python">RiscResponse(
+    self,
+    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    response: Response = &lt;Response [None]&gt;,
+    session: Session = &lt;requests.sessions.Session object at 0x7fa8f059ad00&gt;,
+    items: typing.List[typing.Any] = &lt;factory&gt;,
+    return_status: str = '',
+    return_status_detail: str = '',
+    json: typing.Dict[str, str] = &lt;factory&gt;,
+    page: int = 0)
 </code></pre>
 
 <p>Abstract resource model for all RISC models.
 <h3 id="risc.models.RiscResponse.page">page</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscResponse.response">response</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>The :class:<code>Response &lt;Response&gt;</code> object, which contains a
-server's response to an HTTP request.</p>
+<h3 id="risc.models.RiscResponse.response">response</h3>
+
 <h3 id="risc.models.RiscResponse.return_status">return_status</h3>
 
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscResponse.return_status_detail">return_status_detail</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscResponse.session">session</h3></p>
-<p>A Requests session.</p>
-<p>Provides cookie persistence, connection-pooling, and configuration.</p>
-<p>Basic Usage::</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>import requests
-s = requests.Session()
-s.get('https://httpbin.org/get')
-  <Response [200]></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>Or as a context manager::</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>with requests.Session() as s:
-    s.get('https://httpbin.org/get')
-  <Response [200]></p>
-</blockquote>
-</blockquote>
-</blockquote>
+<h3 id="risc.models.RiscResponse.return_status_detail">return_status_detail</h3>
+
+<h3 id="risc.models.RiscResponse.session">session</h3>
+
 <h2 id="risc.models.RiscResourceModel">RiscResourceModel</h2>
 
-<pre><code class="python">RiscResourceModel(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;) -&gt; None
+<pre><code class="python">RiscResourceModel(
+    self,
+    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    response: Response = &lt;Response [None]&gt;)
 </code></pre>
 
 <p>Abstract resource model for all RISC models.
 <h3 id="risc.models.RiscResourceModel.response">response</h3></p>
-<p>The :class:<code>Response &lt;Response&gt;</code> object, which contains a
-server's response to an HTTP request.</p>
 <h2 id="risc.models.RiscAssessment">RiscAssessment</h2>
 
-<pre><code class="python">RiscAssessment(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;, address: str = '', appliance_public_ip: str = '', assessment_code: str = '', assessment_stage_description: str = '', assessment_stage_name: str = '', city: str = '', company_name: str = '', country: str = '', end_date: str = '', start_date: str = '', state: str = '', zip: str = '', json: Dict[str, str] = &lt;factory&gt;) -&gt; None
+<pre><code class="python">RiscAssessment(self,
+               uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+               response: Response = &lt;Response [None]&gt;,
+               address: str = '',
+               appliance_public_ip: str = '',
+               assessment_code: str = '',
+               assessment_stage_description: str = '',
+               assessment_stage_name: str = '',
+               city: str = '',
+               company_name: str = '',
+               country: str = '',
+               end_date: str = '',
+               start_date: str = '',
+               state: str = '',
+               zip: str = '',
+               json: typing.Dict[str, str] = &lt;factory&gt;)
 </code></pre>
 
 <p>Define the Assessment resource model schema.
 <h3 id="risc.models.RiscAssessment.address">address</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.appliance_public_ip">appliance_public_ip</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.assessment_code">assessment_code</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.assessment_stage_description">assessment_stage_description</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.assessment_stage_name">assessment_stage_name</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.city">city</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.company_name">company_name</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.country">country</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.end_date">end_date</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.is_demo">is_demo</h3></p>
+<h3 id="risc.models.RiscAssessment.appliance_public_ip">appliance_public_ip</h3>
+
+<h3 id="risc.models.RiscAssessment.assessment_code">assessment_code</h3>
+
+<h3 id="risc.models.RiscAssessment.assessment_stage_description">assessment_stage_description</h3>
+
+<h3 id="risc.models.RiscAssessment.assessment_stage_name">assessment_stage_name</h3>
+
+<h3 id="risc.models.RiscAssessment.city">city</h3>
+
+<h3 id="risc.models.RiscAssessment.company_name">company_name</h3>
+
+<h3 id="risc.models.RiscAssessment.country">country</h3>
+
+<h3 id="risc.models.RiscAssessment.end_date">end_date</h3>
+
+<h3 id="risc.models.RiscAssessment.is_demo">is_demo</h3>
+
 <p>Determine whether or not the Assessment is a demo.
 <h3 id="risc.models.RiscAssessment.start_date">start_date</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.state">state</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscAssessment.zip">zip</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h2 id="risc.models.RiscAssessments">RiscAssessments</h2></p>
-<pre><code class="python">RiscAssessments(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7fbd24159ad0&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0, assessments: List[Any] = &lt;factory&gt;) -&gt; None
+<h3 id="risc.models.RiscAssessment.state">state</h3>
+
+<h3 id="risc.models.RiscAssessment.zip">zip</h3>
+
+<h2 id="risc.models.RiscAssessments">RiscAssessments</h2>
+
+<pre><code class="python">RiscAssessments(
+    self,
+    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    response: Response = &lt;Response [None]&gt;,
+    session: Session = &lt;requests.sessions.Session object at 0x7fa8f059ad00&gt;,
+    items: typing.List[typing.Any] = &lt;factory&gt;,
+    return_status: str = '',
+    return_status_detail: str = '',
+    json: typing.Dict[str, str] = &lt;factory&gt;,
+    page: int = 0,
+    assessments: typing.List[typing.Any] = &lt;factory&gt;)
 </code></pre>
 
 <p>Define the Assessments resource model schema.
 <h2 id="risc.models.RiscStacks">RiscStacks</h2></p>
-<pre><code class="python">RiscStacks(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;, session: requests.sessions.Session = &lt;requests.sessions.Session object at 0x7fbd24159ad0&gt;, items: List[Any] = &lt;factory&gt;, return_status: str = '', return_status_detail: str = '', json: Dict[str, str] = &lt;factory&gt;, page: int = 0, stacks: List[Any] = &lt;factory&gt;) -&gt; None
+<pre><code class="python">RiscStacks(
+    self,
+    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    response: Response = &lt;Response [None]&gt;,
+    session: Session = &lt;requests.sessions.Session object at 0x7fa8f059ad00&gt;,
+    items: typing.List[typing.Any] = &lt;factory&gt;,
+    return_status: str = '',
+    return_status_detail: str = '',
+    json: typing.Dict[str, str] = &lt;factory&gt;,
+    page: int = 0,
+    stacks: typing.List[typing.Any] = &lt;factory&gt;)
 </code></pre>
 
 <p>Define the Stacks resource model schema.
 <h2 id="risc.models.RiscStackConnectivity">RiscStackConnectivity</h2></p>
-<pre><code class="python">RiscStackConnectivity(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;, avg_duration_per_connection: float = 0.0, avg_kbps_per_connection: float = 0.0, avg_rtt_per_connection: float = 0.0, connections_seen_via_netstat: int = 0, dest_location: int = 0, dest_location_name: str = '', max_kbps_per_connection: float = 0.0, max_rtt_per_connection: float = 0.0, min_rtt_per_connection: float = 0.0, number_of_distinct_protocols: int = 0, number_of_distinct_source_ip_dest_ip_pairs: int = 0, source_location_name: str = '', source_locationid: int = 0, total_bytes: int = 0, total_duration_per_connection: float = 0.0, total_flows: int = 0) -&gt; None
+<pre><code class="python">RiscStackConnectivity(
+    self,
+    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    response: Response = &lt;Response [None]&gt;,
+    avg_duration_per_connection: float = 0.0,
+    avg_kbps_per_connection: float = 0.0,
+    avg_rtt_per_connection: float = 0.0,
+    connections_seen_via_netstat: int = 0,
+    dest_location: int = 0,
+    dest_location_name: str = '',
+    max_kbps_per_connection: float = 0.0,
+    max_rtt_per_connection: float = 0.0,
+    min_rtt_per_connection: float = 0.0,
+    number_of_distinct_protocols: int = 0,
+    number_of_distinct_source_ip_dest_ip_pairs: int = 0,
+    source_location_name: str = '',
+    source_locationid: int = 0,
+    total_bytes: int = 0,
+    total_duration_per_connection: float = 0.0,
+    total_flows: int = 0)
 </code></pre>
 
 <p>Define the Connectivity resource model schema.
 <h3 id="risc.models.RiscStackConnectivity.avg_duration_per_connection">avg_duration_per_connection</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscStackConnectivity.avg_kbps_per_connection">avg_kbps_per_connection</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscStackConnectivity.avg_rtt_per_connection">avg_rtt_per_connection</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscStackConnectivity.connections_seen_via_netstat">connections_seen_via_netstat</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscStackConnectivity.dest_location">dest_location</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscStackConnectivity.dest_location_name">dest_location_name</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscStackConnectivity.max_kbps_per_connection">max_kbps_per_connection</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscStackConnectivity.max_rtt_per_connection">max_rtt_per_connection</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscStackConnectivity.min_rtt_per_connection">min_rtt_per_connection</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscStackConnectivity.number_of_distinct_protocols">number_of_distinct_protocols</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscStackConnectivity.number_of_distinct_source_ip_dest_ip_pairs">number_of_distinct_source_ip_dest_ip_pairs</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscStackConnectivity.source_location_name">source_location_name</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscStackConnectivity.source_locationid">source_locationid</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscStackConnectivity.total_bytes">total_bytes</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscStackConnectivity.total_duration_per_connection">total_duration_per_connection</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscStackConnectivity.total_flows">total_flows</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h2 id="risc.models.RiscStackConnectivityParent">RiscStackConnectivityParent</h2></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<pre><code class="python">RiscStackConnectivityParent(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;, connectivity: List[Any] = &lt;factory&gt;, returnStatus: str = '', returnStatusDetail: str = '') -&gt; None
+<h3 id="risc.models.RiscStackConnectivity.avg_kbps_per_connection">avg_kbps_per_connection</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.avg_rtt_per_connection">avg_rtt_per_connection</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.connections_seen_via_netstat">connections_seen_via_netstat</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.dest_location">dest_location</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.dest_location_name">dest_location_name</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.max_kbps_per_connection">max_kbps_per_connection</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.max_rtt_per_connection">max_rtt_per_connection</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.min_rtt_per_connection">min_rtt_per_connection</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.number_of_distinct_protocols">number_of_distinct_protocols</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.number_of_distinct_source_ip_dest_ip_pairs">number_of_distinct_source_ip_dest_ip_pairs</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.source_location_name">source_location_name</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.source_locationid">source_locationid</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.total_bytes">total_bytes</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.total_duration_per_connection">total_duration_per_connection</h3>
+
+<h3 id="risc.models.RiscStackConnectivity.total_flows">total_flows</h3>
+
+<h2 id="risc.models.RiscStackConnectivityParent">RiscStackConnectivityParent</h2>
+
+<pre><code class="python">RiscStackConnectivityParent(
+    self,
+    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    response: Response = &lt;Response [None]&gt;,
+    connectivity: typing.List[typing.Any] = &lt;factory&gt;,
+    returnStatus: str = '',
+    returnStatusDetail: str = '')
 </code></pre>
 
 <p>Define the parent Stack Connectivity resource model schema.
 <h3 id="risc.models.RiscStackConnectivityParent.dataframe">dataframe</h3></p>
 <p>Handle converting the connectivity list of objects to a pandas DataFrame.
 <h3 id="risc.models.RiscStackConnectivityParent.returnStatus">returnStatus</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscStackConnectivityParent.returnStatusDetail">returnStatusDetail</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h2 id="risc.models.RiscDeviceConnectivity">RiscDeviceConnectivity</h2></p>
-<pre><code class="python">RiscDeviceConnectivity(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;, avg_duration: float = 0.0, avg_kbps: float = 0.0, avg_rtt: float = 0.0, dest_application: str = '', dest_application_context: str = '', dest_application_instance: str = '', dest_bytes: int = 0, dest_deviceid: int = 0, dest_ip: str = '', dest_packet_count: int = 0, dest_packet_loss: int = 0, dest_port: int = 0, dest_process: str = '', max_kbps: float = 0.0, max_rtt: float = 0.0, min_rtt: float = 0.0, netstat_count: int = 0, source_application: str = '', source_application_context: str = '', source_application_instance: str = '', source_bytes: int = 0, source_deviceid: int = 0, source_packet_count: int = 0, source_packet_loss: int = 0, source_process: str = '', src_ip: str = '', total_bytes: int = 0, total_duration: float = 0.0, total_packets: int = 0) -&gt; None
+<h3 id="risc.models.RiscStackConnectivityParent.returnStatusDetail">returnStatusDetail</h3>
+
+<h2 id="risc.models.RiscDeviceConnectivity">RiscDeviceConnectivity</h2>
+
+<pre><code class="python">RiscDeviceConnectivity(
+    self,
+    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    response: Response = &lt;Response [None]&gt;,
+    avg_duration: float = 0.0,
+    avg_kbps: float = 0.0,
+    avg_rtt: float = 0.0,
+    dest_application: str = '',
+    dest_application_context: str = '',
+    dest_application_instance: str = '',
+    dest_bytes: int = 0,
+    dest_deviceid: int = 0,
+    dest_ip: str = '',
+    dest_packet_count: int = 0,
+    dest_packet_loss: int = 0,
+    dest_port: int = 0,
+    dest_process: str = '',
+    max_kbps: float = 0.0,
+    max_rtt: float = 0.0,
+    min_rtt: float = 0.0,
+    netstat_count: int = 0,
+    source_application: str = '',
+    source_application_context: str = '',
+    source_application_instance: str = '',
+    source_bytes: int = 0,
+    source_deviceid: int = 0,
+    source_packet_count: int = 0,
+    source_packet_loss: int = 0,
+    source_process: str = '',
+    src_ip: str = '',
+    total_bytes: int = 0,
+    total_duration: float = 0.0,
+    total_packets: int = 0)
 </code></pre>
 
 <p>Define the Device Connectivity resource model schema.
 <h3 id="risc.models.RiscDeviceConnectivity.avg_duration">avg_duration</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscDeviceConnectivity.avg_kbps">avg_kbps</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscDeviceConnectivity.avg_rtt">avg_rtt</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscDeviceConnectivity.dest_application">dest_application</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivity.dest_application_context">dest_application_context</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivity.dest_application_instance">dest_application_instance</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivity.dest_bytes">dest_bytes</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.dest_deviceid">dest_deviceid</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.dest_ip">dest_ip</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivity.dest_packet_count">dest_packet_count</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.dest_packet_loss">dest_packet_loss</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.dest_port">dest_port</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.dest_process">dest_process</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivity.max_kbps">max_kbps</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscDeviceConnectivity.max_rtt">max_rtt</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscDeviceConnectivity.min_rtt">min_rtt</h3></p>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscDeviceConnectivity.netstat_count">netstat_count</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.source_application">source_application</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivity.source_application_context">source_application_context</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivity.source_application_instance">source_application_instance</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivity.source_bytes">source_bytes</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.source_deviceid">source_deviceid</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.source_packet_count">source_packet_count</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.source_packet_loss">source_packet_loss</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.source_process">source_process</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivity.src_ip">src_ip</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivity.total_bytes">total_bytes</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscDeviceConnectivity.total_duration">total_duration</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>Convert a string or number to a floating point number, if possible.
-<h3 id="risc.models.RiscDeviceConnectivity.total_packets">total_packets</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h2 id="risc.models.RiscDeviceConnectivityParent">RiscDeviceConnectivityParent</h2></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<pre><code class="python">RiscDeviceConnectivityParent(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;, connectivity: List[Any] = &lt;factory&gt;, returnStatus: str = '', returnStatusDetail: str = '') -&gt; None
+<h3 id="risc.models.RiscDeviceConnectivity.avg_kbps">avg_kbps</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.avg_rtt">avg_rtt</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.dest_application">dest_application</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.dest_application_context">dest_application_context</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.dest_application_instance">dest_application_instance</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.dest_bytes">dest_bytes</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.dest_deviceid">dest_deviceid</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.dest_ip">dest_ip</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.dest_packet_count">dest_packet_count</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.dest_packet_loss">dest_packet_loss</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.dest_port">dest_port</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.dest_process">dest_process</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.max_kbps">max_kbps</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.max_rtt">max_rtt</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.min_rtt">min_rtt</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.netstat_count">netstat_count</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.source_application">source_application</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.source_application_context">source_application_context</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.source_application_instance">source_application_instance</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.source_bytes">source_bytes</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.source_deviceid">source_deviceid</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.source_packet_count">source_packet_count</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.source_packet_loss">source_packet_loss</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.source_process">source_process</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.src_ip">src_ip</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.total_bytes">total_bytes</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.total_duration">total_duration</h3>
+
+<h3 id="risc.models.RiscDeviceConnectivity.total_packets">total_packets</h3>
+
+<h2 id="risc.models.RiscDeviceConnectivityParent">RiscDeviceConnectivityParent</h2>
+
+<pre><code class="python">RiscDeviceConnectivityParent(
+    self,
+    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    response: Response = &lt;Response [None]&gt;,
+    connectivity: typing.List[typing.Any] = &lt;factory&gt;,
+    returnStatus: str = '',
+    returnStatusDetail: str = '')
 </code></pre>
 
 <p>Define the parent Device Connectivity resource model schema.
 <h3 id="risc.models.RiscDeviceConnectivityParent.returnStatus">returnStatus</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscDeviceConnectivityParent.returnStatusDetail">returnStatusDetail</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h2 id="risc.models.RiscTag">RiscTag</h2></p>
-<pre><code class="python">RiscTag(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;, tagid: int = 0, tagkey: str = '', tagvalue: str = '') -&gt; None
+<h3 id="risc.models.RiscDeviceConnectivityParent.returnStatusDetail">returnStatusDetail</h3>
+
+<h2 id="risc.models.RiscTag">RiscTag</h2>
+
+<pre><code class="python">RiscTag(self,
+        uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+        response: Response = &lt;Response [None]&gt;,
+        tagid: int = 0,
+        tagkey: str = '',
+        tagvalue: str = '')
 </code></pre>
 
 <p>Define the Tag resource model schema.
 <h3 id="risc.models.RiscTag.tagid">tagid</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscTag.tagkey">tagkey</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscTag.tagvalue">tagvalue</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h2 id="risc.models.RiscStack">RiscStack</h2></p>
-<pre><code class="python">RiscStack(self, uuid: uuid.UUID = UUID('c904311c-ff73-4181-b4de-8d273883d936'), response: requests.models.Response = &lt;Response [None]&gt;, confirmed: str = '', confirmedby: str = 'not set', licensed: int = 0, num_members_with_failed_checks: int = 0, num_stack_members: int = 0, stack_name: str = '', stackid: int = 0, tags: List[Any] = &lt;factory&gt;) -&gt; None
+<h3 id="risc.models.RiscTag.tagkey">tagkey</h3>
+
+<h3 id="risc.models.RiscTag.tagvalue">tagvalue</h3>
+
+<h2 id="risc.models.RiscStack">RiscStack</h2>
+
+<pre><code class="python">RiscStack(self,
+          uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+          response: Response = &lt;Response [None]&gt;,
+          confirmed: str = '',
+          confirmedby: str = 'not set',
+          licensed: int = 0,
+          num_members_with_failed_checks: int = 0,
+          num_stack_members: int = 0,
+          stack_name: str = '',
+          stackid: int = 0,
+          tags: typing.List[typing.Any] = &lt;factory&gt;)
 </code></pre>
 
 <p>Define the Stack resource model schema.
 <h3 id="risc.models.RiscStack.confirmed">confirmed</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscStack.confirmedby">confirmedby</h3></p>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscStack.licensed">licensed</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscStack.num_members_with_failed_checks">num_members_with_failed_checks</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscStack.num_stack_members">num_stack_members</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4
-<h3 id="risc.models.RiscStack.stack_name">stack_name</h3></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<p>str(object='') -&gt; str
-str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
-<p>Create a new string object from the given object. If encoding or
-errors is specified, then the object must expose a data buffer
-that will be decoded using the given encoding and error handler.
-Otherwise, returns the result of object.<strong>str</strong>() (if defined)
-or repr(object).
-encoding defaults to sys.getdefaultencoding().
-errors defaults to 'strict'.
-<h3 id="risc.models.RiscStack.stackid">stackid</h3></p>
-<p>int([x]) -&gt; integer
-int(x, base=10) -&gt; integer</p>
-<p>Convert a number or string to an integer, or return 0 if no arguments
-are given.  If x is a number, return x.<strong>int</strong>().  For floating point
-numbers, this truncates towards zero.</p>
-<p>If x is not a number or if base is given, then x must be a string,
-bytes, or bytearray instance representing an integer literal in the
-given base.  The literal can be preceded by '+' or '-' and be surrounded
-by whitespace.  The base defaults to 10.  Valid bases are 0 and 2-36.
-Base 0 means to interpret the base from the string as an integer literal.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>int('0b100', base=0)
-4</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<h3 id="risc.models.RiscStack.confirmedby">confirmedby</h3>
+
+<h3 id="risc.models.RiscStack.licensed">licensed</h3>
+
+<h3 id="risc.models.RiscStack.num_members_with_failed_checks">num_members_with_failed_checks</h3>
+
+<h3 id="risc.models.RiscStack.num_stack_members">num_stack_members</h3>
+
+<h3 id="risc.models.RiscStack.stack_name">stack_name</h3>
+
+<h3 id="risc.models.RiscStack.stackid">stackid</h3>
                 
                   
+                
                 
               
               
@@ -1541,9 +888,9 @@ Base 0 means to interpret the base from the string as an integer literal.</p>
       <div class="md-footer-copyright">
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
@@ -1553,9 +900,9 @@ Base 0 means to interpret the base from the string as an integer literal.</p>
       
     </div>
     
-      <script src="../../../assets/javascripts/application.a8b5e56f.js"></script>
+      <script src="../../../assets/javascripts/application.c33a9706.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../../.."}})</script>
       
     
   </body>
