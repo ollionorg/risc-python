@@ -472,7 +472,7 @@
 <p>Define the RISC models module.
 <h2 id="risc.models.AbstractRiscModel">AbstractRiscModel</h2></p>
 <pre><code class="python">AbstractRiscModel(
-    self, uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'))
+    self, uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'))
 </code></pre>
 
 <p>Abstract resource model for all RISC models.
@@ -497,9 +497,9 @@
 <h2 id="risc.models.RiscResponse">RiscResponse</h2></p>
 <pre><code class="python">RiscResponse(
     self,
-    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
     response: Response = &lt;Response [None]&gt;,
-    session: Session = &lt;requests.sessions.Session object at 0x7fa8f059ad00&gt;,
+    session: Session = &lt;requests.sessions.Session object at 0x7fb85bb6c2b0&gt;,
     items: typing.List[typing.Any] = &lt;factory&gt;,
     return_status: str = '',
     return_status_detail: str = '',
@@ -521,7 +521,7 @@
 
 <pre><code class="python">RiscResourceModel(
     self,
-    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
     response: Response = &lt;Response [None]&gt;)
 </code></pre>
 
@@ -530,7 +530,7 @@
 <h2 id="risc.models.RiscAssessment">RiscAssessment</h2>
 
 <pre><code class="python">RiscAssessment(self,
-               uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+               uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
                response: Response = &lt;Response [None]&gt;,
                address: str = '',
                appliance_public_ip: str = '',
@@ -577,9 +577,9 @@
 
 <pre><code class="python">RiscAssessments(
     self,
-    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
     response: Response = &lt;Response [None]&gt;,
-    session: Session = &lt;requests.sessions.Session object at 0x7fa8f059ad00&gt;,
+    session: Session = &lt;requests.sessions.Session object at 0x7fb85bb6c2b0&gt;,
     items: typing.List[typing.Any] = &lt;factory&gt;,
     return_status: str = '',
     return_status_detail: str = '',
@@ -592,9 +592,9 @@
 <h2 id="risc.models.RiscStacks">RiscStacks</h2></p>
 <pre><code class="python">RiscStacks(
     self,
-    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
     response: Response = &lt;Response [None]&gt;,
-    session: Session = &lt;requests.sessions.Session object at 0x7fa8f059ad00&gt;,
+    session: Session = &lt;requests.sessions.Session object at 0x7fb85bb6c2b0&gt;,
     items: typing.List[typing.Any] = &lt;factory&gt;,
     return_status: str = '',
     return_status_detail: str = '',
@@ -607,7 +607,7 @@
 <h2 id="risc.models.RiscStackConnectivity">RiscStackConnectivity</h2></p>
 <pre><code class="python">RiscStackConnectivity(
     self,
-    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
     response: Response = &lt;Response [None]&gt;,
     avg_duration_per_connection: float = 0.0,
     avg_kbps_per_connection: float = 0.0,
@@ -663,7 +663,7 @@
 
 <pre><code class="python">RiscStackConnectivityParent(
     self,
-    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
     response: Response = &lt;Response [None]&gt;,
     connectivity: typing.List[typing.Any] = &lt;factory&gt;,
     returnStatus: str = '',
@@ -680,7 +680,7 @@
 
 <pre><code class="python">RiscDeviceConnectivity(
     self,
-    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
     response: Response = &lt;Response [None]&gt;,
     avg_duration: float = 0.0,
     avg_kbps: float = 0.0,
@@ -775,7 +775,7 @@
 
 <pre><code class="python">RiscDeviceConnectivityParent(
     self,
-    uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+    uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
     response: Response = &lt;Response [None]&gt;,
     connectivity: typing.List[typing.Any] = &lt;factory&gt;,
     returnStatus: str = '',
@@ -789,7 +789,7 @@
 <h2 id="risc.models.RiscTag">RiscTag</h2>
 
 <pre><code class="python">RiscTag(self,
-        uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+        uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
         response: Response = &lt;Response [None]&gt;,
         tagid: int = 0,
         tagkey: str = '',
@@ -805,7 +805,7 @@
 <h2 id="risc.models.RiscStack">RiscStack</h2>
 
 <pre><code class="python">RiscStack(self,
-          uuid: UUID = UUID('99575cad-8ee2-4941-b359-81b2a298eb17'),
+          uuid: UUID = UUID('9d146b8f-b0ad-498e-900e-db78c46564bf'),
           response: Response = &lt;Response [None]&gt;,
           confirmed: str = '',
           confirmedby: str = 'not set',
